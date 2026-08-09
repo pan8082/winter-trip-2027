@@ -297,6 +297,11 @@ body {
   gap: 0.4rem;
 }
 
+.map-pins--inline {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
 .map-pin a {
   color: var(--navy);
   text-decoration: none;
