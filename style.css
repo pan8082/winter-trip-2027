@@ -73,6 +73,11 @@ body {
   opacity: 0.75;
 }
 
+.hero-eyebrow__year {
+  margin-left: -0.1em;
+  letter-spacing: 0.02em;
+}
+
 .hero-title {
   position: relative;
   z-index: 2;
@@ -85,18 +90,6 @@ body {
   color: var(--navy);
 }
 
-.hero-corner {
-  position: absolute;
-  z-index: 2;
-  font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  color: var(--navy);
-  opacity: 0.7;
-}
-
-.hero-corner--tl { top: 1.25rem; left: 1.25rem; }
-
 /* Sticky jump nav */
 
 .jump-nav {
@@ -107,8 +100,7 @@ body {
   gap: 0.5rem;
   overflow-x: auto;
   padding: 0.75rem 1rem;
-  background: var(--card);
-  border-bottom: 1px solid var(--line);
+  background: var(--card-muted);
   scrollbar-width: none;
 }
 
@@ -120,7 +112,7 @@ body {
   flex: 0 0 auto;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  background: var(--card-muted);
+  background: var(--card);
   color: var(--navy);
   font-family: "Cactus Classical Serif", serif;
   font-size: 1rem;
