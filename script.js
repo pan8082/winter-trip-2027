@@ -329,6 +329,16 @@ function setupTodayPill(todayDay) {
   document.getElementById(todayDay.id).scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function setupStickyShadow() {
+  const sentinel = document.getElementById("nav-sentinel");
+  const nav = document.getElementById("jump-nav");
+  const update = () => {
+    nav.classList.toggle("is-stuck", sentinel.getBoundingClientRect().top < 0);
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
 renderAccommodationSection();
 const todayDay = renderItinerary();
 renderTransportSection();
@@ -336,3 +346,4 @@ renderBudgetSection();
 renderPackingSection();
 renderTodosSection();
 setupTodayPill(todayDay);
+setupStickyShadow();

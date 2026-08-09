@@ -55,9 +55,9 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   height: 30%;
-  background: linear-gradient(180deg, rgba(244, 247, 251, 0) 0%, var(--card-muted) 92%);
+  background: linear-gradient(180deg, rgba(244, 247, 251, 0) 0%, var(--card-muted) 80%);
   z-index: 1;
   pointer-events: none;
 }
@@ -92,16 +92,25 @@ body {
 
 /* Sticky jump nav */
 
+#nav-sentinel {
+  height: 1px;
+}
+
 .jump-nav {
   position: sticky;
   top: 0;
   z-index: 10;
+  margin-top: -1px;
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
   padding: 0.75rem 1rem;
   background: var(--card-muted);
   scrollbar-width: none;
+}
+
+.jump-nav.is-stuck {
+  box-shadow: 0 4px 16px rgba(11, 27, 51, 0.12);
 }
 
 .jump-nav::-webkit-scrollbar {
