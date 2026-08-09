@@ -7,17 +7,59 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>2027 冬遊</h1>
-    <p class="subtitle">行程總覽</p>
+  <header class="hero">
+    <span class="hero-corner hero-corner--tl">2027</span>
+    <span class="hero-corner hero-corner--tr">TRIP</span>
+    <h1 class="hero-title">冬遊<span class="hero-title-accent">2027</span></h1>
+    <p class="hero-subtitle" id="hero-subtitle">行程總覽</p>
+    <span class="hero-corner hero-corner--bl">SNOW</span>
+    <span class="hero-corner hero-corner--br">GO</span>
   </header>
 
-  <main id="itinerary">
-    <!-- Day cards go here -->
+  <nav class="jump-nav" id="jump-nav">
+    <a href="#today-anchor" id="today-pill" class="jump-nav__today" hidden>📍 今天</a>
+    <a href="#itinerary">行程</a>
+    <a href="#accommodation">住宿</a>
+    <a href="#transport">交通</a>
+    <a href="#budget">預算</a>
+    <a href="#packing">打包清單</a>
+    <a href="#todos">重要資訊</a>
+  </nav>
+
+  <main>
+    <section id="itinerary" class="section">
+      <h2 class="section-title">行程</h2>
+      <div id="itinerary-list" class="stack"></div>
+    </section>
+
+    <section id="accommodation" class="section">
+      <h2 class="section-title">住宿</h2>
+      <div id="accommodation-list" class="stack"></div>
+    </section>
+
+    <section id="transport" class="section">
+      <h2 class="section-title">交通總覽</h2>
+      <div id="transport-list" class="stack"></div>
+    </section>
+
+    <section id="budget" class="section">
+      <h2 class="section-title">預算</h2>
+      <div id="budget-list" class="stack"></div>
+    </section>
+
+    <section id="packing" class="section">
+      <h2 class="section-title">打包清單</h2>
+      <div id="packing-list" class="stack"></div>
+    </section>
+
+    <section id="todos" class="section">
+      <h2 class="section-title">重要資訊 · 待辦事項</h2>
+      <div id="todos-list" class="stack"></div>
+    </section>
   </main>
 
   <footer>
-    <p>Made with ❄️ for the trip crew</p>
+    <p>為旅伴們用 ❄️ 製作</p>
   </footer>
 
   <script src="script.js"></script>
