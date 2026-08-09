@@ -1,0 +1,77 @@
+:root {
+  --bg: #0f1720;
+  --card: #1a2733;
+  --text: #e8edf2;
+  --muted: #9aa9b6;
+  --accent: #6ec6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Helvetica Neue", "PingFang TC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 3rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+#itinerary {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.day-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.day-card h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.day-card .date {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.day-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.day-card li {
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 1.5rem;
+  font-size: 0.85rem;
+}
