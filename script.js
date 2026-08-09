@@ -400,8 +400,7 @@ function renderItinerary() {
       "article",
       `day-card${isToday ? " day-card--today" : ""}`,
       `
-      <div class="day-card__label">DAY ${String(index + 1).padStart(2, "0")}</div>
-      <div class="day-card__date">${day.date}（${day.weekday}）</div>
+      <div class="day-card__meta">DAY ${String(index + 1).padStart(2, "0")} · ${day.date}（${day.weekday}）</div>
       <h3 class="day-card__title">${day.title}</h3>
       ${renderDayTimeline(day.timeline)}
     `

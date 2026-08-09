@@ -174,19 +174,11 @@ body {
   box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.15);
 }
 
-.day-card__label {
-  font-family: "Cactus Classical Serif", serif;
-  font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  color: var(--navy);
-  opacity: 0.5;
-}
-
-.day-card__date {
+.day-card__meta {
   font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   color: var(--muted);
-  margin-top: 0.15rem;
 }
 
 .day-card__title {
