@@ -125,8 +125,9 @@ body {
 }
 
 .section-title {
-  font-size: clamp(1.6rem, 6vw, 2.2rem);
-  font-weight: 900;
+  font-family: "Cactus Classical Serif", serif;
+  font-size: clamp(1.8rem, 7vw, 2.4rem);
+  font-weight: 400;
   color: var(--navy);
   margin: 0 0 1.25rem;
   letter-spacing: -0.01em;
@@ -154,9 +155,10 @@ body {
 }
 
 .day-card__label {
-  font-weight: 900;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
   color: var(--accent);
 }
 
