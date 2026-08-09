@@ -42,30 +42,22 @@ body {
 }
 
 .hero-eyebrow {
-  margin: 0;
+  margin: 0 0 1.1rem;
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.15em;
   color: var(--navy);
   opacity: 0.75;
 }
 
 .hero-title {
-  margin: 0.4rem 0 0;
+  margin: 0;
   font-family: "Cactus Classical Serif", serif;
   font-weight: 400;
   font-size: clamp(3.4rem, 18vw, 7.5rem);
   line-height: 0.95;
   letter-spacing: -0.01em;
   color: var(--navy);
-}
-
-.hero-subtitle {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: 0.05em;
 }
 
 .hero-corner {
@@ -78,9 +70,6 @@ body {
 }
 
 .hero-corner--tl { top: 1.25rem; left: 1.25rem; }
-.hero-corner--tr { top: 1.25rem; right: 1.25rem; }
-.hero-corner--bl { bottom: 1.25rem; left: 1.25rem; }
-.hero-corner--br { bottom: 1.25rem; right: 1.25rem; }
 
 /* Sticky jump nav */
 
@@ -106,8 +95,10 @@ body {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: "Cactus Classical Serif", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -157,9 +148,10 @@ body {
 .day-card__label {
   font-family: "Cactus Classical Serif", serif;
   font-weight: 400;
-  font-size: 1.1rem;
-  letter-spacing: 0.1em;
-  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  opacity: 0.5;
 }
 
 .day-card__date {
@@ -169,8 +161,9 @@ body {
 }
 
 .day-card__title {
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-family: "Cactus Classical Serif", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: var(--navy);
   margin: 0.35rem 0 1rem;
 }
