@@ -274,7 +274,7 @@ const accommodations = [
 const budget = {
   items: [
     { name: "交通", total: null, perPerson: null, paid: null, paidBy: null },
-    { name: "住宿・坂戸城", total: 86940, perPerson: 19320, paid: "prepaid", paidBy: "多" },
+    { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿（新潟／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
@@ -484,12 +484,13 @@ function renderBudgetSection() {
     .map((item) => {
       const total = formatMoney(item.total);
       const perPerson = formatMoney(item.perPerson);
+      const perPersonNote = item.perPersonNote ? `<div class="budget-table__note">${item.perPersonNote}</div>` : "";
       const paidLabel = paidLabels[item.paid] || "待定";
       const paidByLabel = item.paid === "prepaid" && item.paidBy ? item.paidBy : "—";
       return `<tr>
         <td>${item.name}</td>
         <td class="${total ? "" : "cell--missing"}">${total || "待補"}</td>
-        <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}</td>
+        <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}${perPersonNote}</td>
         <td>${paidLabel}</td>
         <td>${paidByLabel}</td>
       </tr>`;
