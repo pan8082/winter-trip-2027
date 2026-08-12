@@ -180,7 +180,7 @@ const days = [
       { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
       { type: "note", text: "交通方式待定，三個選項：①計程車，起跳700円+每260m加100円，粗估整趟約7,000–8,000円（需電話問車行確認）；②電車，磐越西線約25–30分鐘，510円，冬季班次不密集；③可詢問滑雪度假村是否提供會津若松/郡山駅接駁" },
       { type: "note", text: "租車異地還車：新潟取車 → 會津若松還車（猪苗代當地無可還車門市）。異地還車費參考約8,800円（豐田租車新潟空港店→會津若松駅店，2026–2027年是否有免費活動需另外確認）" },
-      { type: "accommodation", id: "acc-inawashiro", name: "豬苗代絕景滑雪度假村" },
+      { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
     ],
   },
   {
@@ -219,7 +219,7 @@ const days = [
     weekday: "六",
     title: "賦歸",
     timeline: [
-      { type: "accommodation", id: "acc-inawashiro", name: "豬苗代絕景滑雪度假村", checkOut: null },
+      { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ", checkOut: "~10:00" },
       { type: "note", text: "checkout，賦歸" },
     ],
   },
@@ -260,8 +260,12 @@ const accommodations = [
   {
     id: "acc-inawashiro",
     region: "猪苗代",
-    name: "豬苗代絕景滑雪度假村",
-    mapUrl: "https://maps.google.com/?q=豬苗代絕景滑雪度假村",
+    name: "ヴィラ イナワシロ",
+    address: "〒969-3102 福島県耶麻郡猪苗代町字葉山7105",
+    mapUrl: "https://maps.google.com/?q=ヴィラ イナワシロ 猪苗代",
+    phone: "0242-62-4111",
+    voucher:
+      "訂房確認：ヴィラ イナワシロ（会津・裏磐梯・猪苗代湖畔），分兩筆預訂共接續4晚：2027/01/05–01/08（3連泊）+ 2027/01/08–01/09（1晚），皆為東館和室【禁煙】、觀光拠点に最適プラン、朝夕食付，退房約10:00。房型分配：1號房2人（男1/女1），2號房3人（女3）。金額：3連泊小計198,000円+入湯税2,250円＝200,250円；1晚小計66,000円+入湯税750円＝66,750円，合計267,000円。信用卡付款（帳單顯示「タイムデザイン（旅行予約）」）。交通方式：自駕。取消政策：當日100%、前日50%、2–3日前30%。\n\n（予約番號見訂房確認信，此處不公開顯示）",
   },
 ];
 
@@ -270,7 +274,9 @@ const accommodations = [
 const budget = {
   items: [
     { name: "交通", total: null, perPerson: null, paid: null, paidBy: null },
-    { name: "住宿", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿・坂戸城", total: 86940, perPerson: 19320, paid: "prepaid", paidBy: "多" },
+    { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
+    { name: "住宿（新潟／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
