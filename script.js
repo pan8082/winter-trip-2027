@@ -17,6 +17,7 @@ const days = [
     timeline: [
       { type: "note", text: "新潟集合，部分人可能提早到。入境城市假設為東京（待確認），12/26當天各自從東京銜接新潟的交通方式尚未定案。" },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
+      { type: "note", text: "備案：抵達後若有空檔，可去新潟駅ぽんしゅ館試飲新潟地酒（500円5枚代幣，可試喝新潟縣內近90間酒藏的酒）" },
     ],
   },
   {
@@ -75,6 +76,7 @@ const days = [
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（尚未訂房，詳見住宿清單）" },
       { type: "note", text: "此日移動量較大，行程宜精簡（尚未定案事項）" },
+      { type: "note", text: "備案：晚間若還有力氣，新潟駅ぽんしゅ館可順路試酒/採購伴手禮" },
     ],
   },
   {
@@ -94,6 +96,15 @@ const days = [
           { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
         ],
       },
+      {
+        type: "activity",
+        order: 2,
+        name: "ぽんしゅ館 新潟驛店",
+        backups: [
+          { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
+          { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
+        ],
+      },
       { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
     ],
   },
@@ -105,6 +116,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "白山神社（初詣）", map: { name: "白山神社", url: "https://maps.google.com/?q=白山神社 新潟" } },
       { type: "activity", order: 2, name: "白山公園", map: { name: "白山公園", url: "https://maps.google.com/?q=白山公園 新潟" } },
+      { type: "note", text: "備案：白山公園後若時間允許，可順路去ぽんしゅ館（新潟駅）試酒，當作跨年後的悠閒行程" },
     ],
   },
   {
@@ -114,6 +126,7 @@ const days = [
     title: "只見線景觀 → 會津若松（移動日）",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
+      { type: "note", text: "備案：離開新潟前，可在新潟駅ぽんしゅ館做最後採購（新潟地酒/伴手禮，之後就進福島縣了）" },
       { type: "transport", summary: "新潟 → 只見線沿線 → 會津若松" },
       {
         type: "activity",
