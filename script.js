@@ -50,19 +50,11 @@ const days = [
     id: "day-4",
     date: "2026-12-29",
     weekday: "二",
-    title: "南魚沼・龍氣日歸溫泉",
+    title: "南魚沼・入住坂戸城",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
       { type: "transport", summary: "新潟 → 南魚沼" },
-      {
-        type: "activity",
-        order: 1,
-        name: "龍氣日歸溫泉",
-        openHours: "10:00–17:00（大人1,000円）／17:00–21:00（大人800円）",
-        cost: "藥石風呂加購550円",
-        map: { name: "龍氣日歸溫泉", url: "https://maps.google.com/?q=龍氣日歸溫泉" },
-      },
-      { type: "accommodation", id: "acc-rokkamachi", name: "ビジネスホテルライフ", checkIn: "15:00" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkIn: "14:00（官網限定方案可提早入住）" },
     ],
   },
   {
@@ -71,7 +63,7 @@ const days = [
     weekday: "三",
     title: "南魚沼 → 新潟（移動日）",
     timeline: [
-      { type: "accommodation", id: "acc-rokkamachi", name: "ビジネスホテルライフ", checkOut: "09:00" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkOut: "09:00" },
       { type: "transport", summary: "南魚沼 → 新潟", duration: "約2–2.5小時" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（尚未訂房，詳見住宿清單）" },
@@ -257,10 +249,13 @@ const accommodations = [
   },
   {
     id: "acc-rokkamachi",
-    region: "六日町（南魚沼）",
-    name: "ビジネスホテルライフ",
-    mapUrl: "https://maps.google.com/?q=ビジネスホテルライフ 六日町",
-    voucher: "JR六日町駅前，含鹽化鈉溫泉大浴場，check-in 15:00 / check-out 9:00，確切價格需上訂房網站查",
+    region: "六日町温泉（南魚沼）",
+    name: "坂戸城",
+    address: "〒949-6611 新潟県南魚沼市阪戸292-4",
+    mapUrl: "https://maps.google.com/?q=坂戸城 南魚沼",
+    phone: "025-773-3333（訂房專線 0120-373-372）",
+    voucher:
+      "官網限定方案「南魚沼の和食会席」2食付，東館和室（禁煙）5名1晚，2026/12/29-30參考價86,940円（原價96,600円，官網折扣-9,660円），已含晚餐（魚沼和食会席，最終進場19:30前）+早餐（越光米吃到飽+田舎の朝ごはんバイキング）。溫泉為六日町温泉，男女大浴場每日輪換，弱鹼性鈉-氯化物泉主打美肌の湯。東館無電梯，如需1樓房要事先跟飯店確認。Email：front@sakadojo.com",
   },
   {
     id: "acc-inawashiro",
