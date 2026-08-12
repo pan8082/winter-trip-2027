@@ -265,12 +265,14 @@ const accommodations = [
   },
 ];
 
+// paid: null (未定) | "prepaid" (已先付) | "onsite" (現場付)
+// paidBy: 只在 paid === "prepaid" 時才有意義
 const budget = {
-  categories: [
-    { name: "交通", amount: null },
-    { name: "住宿", amount: null },
-    { name: "活動", amount: null },
-    { name: "餐飲", amount: null },
+  items: [
+    { name: "交通", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
 };
 
@@ -464,28 +466,54 @@ function renderTransportSection() {
   });
 }
 
+function formatMoney(n) {
+  return typeof n === "number" ? `¥${n.toLocaleString()}` : null;
+}
+
 function renderBudgetSection() {
   const container = document.getElementById("budget-list");
-  const card = el("div", "budget-card");
-  let total = 0;
-  let hasMissing = false;
-  budget.categories.forEach((c) => {
-    if (typeof c.amount === "number") {
-      total += c.amount;
-      card.appendChild(el("div", "budget-row", `<span>${c.name}</span><span>¥${c.amount.toLocaleString()}</span>`));
-    } else {
-      hasMissing = true;
-      card.appendChild(el("div", "budget-row", `<span>${c.name}</span><span class="budget-row__amount--missing">待補</span>`));
-    }
-  });
-  card.appendChild(
-    el(
-      "div",
-      "budget-row budget-row--total",
-      `<span>合計${hasMissing ? "（不含待補項目）" : ""}</span><span>¥${total.toLocaleString()}</span>`
-    )
+  const paidLabels = { prepaid: "已先付", onsite: "現場付" };
+
+  const rows = budget.items
+    .map((item) => {
+      const total = formatMoney(item.total);
+      const perPerson = formatMoney(item.perPerson);
+      const paidLabel = paidLabels[item.paid] || "待定";
+      const paidByLabel = item.paid === "prepaid" && item.paidBy ? item.paidBy : "—";
+      return `<tr>
+        <td>${item.name}</td>
+        <td class="${total ? "" : "cell--missing"}">${total || "待補"}</td>
+        <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}</td>
+        <td>${paidLabel}</td>
+        <td>${paidByLabel}</td>
+      </tr>`;
+    })
+    .join("");
+
+  const knownTotal = budget.items.reduce((sum, i) => sum + (typeof i.total === "number" ? i.total : 0), 0);
+  const knownPerPerson = budget.items.reduce((sum, i) => sum + (typeof i.perPerson === "number" ? i.perPerson : 0), 0);
+  const hasMissing = budget.items.some((i) => typeof i.total !== "number");
+
+  const wrapper = el(
+    "div",
+    "budget-table-wrap",
+    `<table class="budget-table">
+      <thead>
+        <tr><th>項目</th><th>總額</th><th>每人</th><th>付款</th><th>先付人</th></tr>
+      </thead>
+      <tbody>
+        ${rows}
+        <tr class="budget-table__total">
+          <td>合計${hasMissing ? "（不含待補）" : ""}</td>
+          <td>¥${knownTotal.toLocaleString()}</td>
+          <td>¥${knownPerPerson.toLocaleString()}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>`
   );
-  container.appendChild(card);
+  container.appendChild(wrapper);
 }
 
 function checklistKey(group, item) {

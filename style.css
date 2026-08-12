@@ -387,34 +387,45 @@ body {
 
 /* Budget */
 
-.budget-card {
+.budget-table-wrap {
   background: var(--card);
   border-radius: 16px;
-  padding: 1.25rem 1.5rem;
   border: 1px solid var(--line);
+  overflow: hidden;
+  overflow-x: auto;
 }
 
-.budget-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.6rem 0;
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.budget-table th,
+.budget-table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
   border-bottom: 1px solid var(--line);
-  font-weight: 600;
 }
 
-.budget-row:last-child {
-  border-bottom: none;
+.budget-table th {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
 }
 
-.budget-row--total {
-  font-weight: 900;
-  color: var(--navy);
-  font-size: 1.1rem;
-}
-
-.budget-row__amount--missing {
+.budget-table td.cell--missing {
   color: var(--warn);
   font-weight: 700;
+}
+
+.budget-table__total td {
+  font-weight: 900;
+  color: var(--navy);
+  border-bottom: none;
 }
 
 /* Packing & todos */
