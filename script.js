@@ -280,7 +280,14 @@ const accommodations = [
 // paidBy: 只在 paid === "prepaid" 時才有意義
 const budget = {
   items: [
-    { name: "交通・租車（ニッポンレンタカー）", total: null, perPerson: null, paid: "prepaid", paidBy: "多" },
+    {
+      name: "交通・租車（ニッポンレンタカー）",
+      total: 185570,
+      perPerson: 37114,
+      perPersonNote: "取車當日（12/29）才會扣款，尚未收費",
+      paid: "onsite",
+      paidBy: null,
+    },
     { name: "交通（其他：電車／計程車等）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
