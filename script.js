@@ -24,26 +24,21 @@ const days = [
     id: "day-2",
     date: "2026-12-27",
     weekday: "日",
-    title: "彌彥山・彌彥神社",
+    title: "燕三条職人工坊",
     timeline: [
-      {
-        type: "activity",
-        order: 1,
-        name: "彌彥山纜車＋彌彥神社",
-        openHours: "冬季9:00–16:00，每週二公休（12/27為週日不受影響）",
-        map: { name: "彌彥山纜車", url: "https://maps.google.com/?q=彌彥山纜車" },
-      },
-      { type: "note", text: "山頂到彌彥神社御神廟走路約15分鐘，媽媽體力不夠可留在山頂即可" },
+      { type: "activity", order: 1, name: "諏訪田製作所", map: { name: "諏訪田製作所", url: "https://maps.google.com/?q=諏訪田製作所" } },
+      { type: "activity", order: 2, name: "玉川堂", map: { name: "玉川堂", url: "https://maps.google.com/?q=玉川堂" } },
     ],
   },
   {
     id: "day-3",
     date: "2026-12-28",
     weekday: "一",
-    title: "燕三条職人工坊",
+    title: "接機＋新潟取車（爸爸、妹妹抵達）",
     timeline: [
-      { type: "activity", order: 1, name: "諏訪田製作所", map: { name: "諏訪田製作所", url: "https://maps.google.com/?q=諏訪田製作所" } },
-      { type: "activity", order: 2, name: "玉川堂", map: { name: "玉川堂", url: "https://maps.google.com/?q=玉川堂" } },
+      { type: "note", text: "爸爸、妹妹搭虎航班機抵達，加入本次旅程（航班時間、抵達機場待確認，假設為新潟空港）" },
+      { type: "note", text: "在新潟空港取車（豐田租車新潟空港店，異地還車資訊見day-11備註）" },
+      { type: "note", text: "此日行程以接機＋取車為主，其他細節尚未定案" },
     ],
   },
   {
@@ -75,11 +70,19 @@ const days = [
     id: "day-6",
     date: "2026-12-31",
     weekday: "四",
-    title: "新潟市區（跨年夜）",
+    title: "彌彥山・彌彥神社 → 新潟市區（跨年夜）",
     timeline: [
       {
         type: "activity",
         order: 1,
+        name: "彌彥山纜車＋彌彥神社",
+        openHours: "冬季9:00–16:00，每週二公休（12/31不受影響）",
+        map: { name: "彌彥山纜車", url: "https://maps.google.com/?q=彌彥山纜車" },
+      },
+      { type: "note", text: "山頂到彌彥神社御神廟走路約15分鐘，媽媽體力不夠可留在山頂即可" },
+      {
+        type: "activity",
+        order: 2,
         name: "新潟市區觀光（跨年夜，景點待排）",
         backups: [
           { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
@@ -90,7 +93,7 @@ const days = [
       },
       {
         type: "activity",
-        order: 2,
+        order: 3,
         name: "ぽんしゅ館 新潟驛店",
         backups: [
           { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
@@ -98,6 +101,7 @@ const days = [
         ],
       },
       { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
+      { type: "note", text: "此日行程較滿（彌彥山＋跨年夜市區），時間安排尚未定案" },
     ],
   },
   {
@@ -174,7 +178,7 @@ const days = [
     id: "day-11",
     date: "2027-01-05",
     weekday: "二",
-    title: "會津若松 → 入住豬苗代絕景滑雪度假村",
+    title: "會津若松 → 入住猪苗代 ヴィラ イナワシロ",
     timeline: [
       { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-8備註）" },
       { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
