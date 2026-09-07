@@ -34,10 +34,36 @@ const days = [
     id: "day-3",
     date: "2026-12-28",
     weekday: "一",
-    title: "接機（爸爸、妹妹抵達）",
+    title: "新潟市區觀光・與爸爸妹妹會合",
     timeline: [
-      { type: "note", text: "爸爸、妹妹搭虎航 IT228 抵達新潟空港，桃園約13:45–13:55起飛，18:00抵達新潟" },
-      { type: "note", text: "此日行程以接機為主，其他細節尚未定案" },
+      {
+        type: "activity",
+        order: 1,
+        name: "爸爸、妹妹抵達新潟，會合",
+        cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
+      },
+      {
+        type: "activity",
+        order: 2,
+        name: "新潟市區觀光（景點待排）",
+        backups: [
+          { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
+          { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
+          { name: "古町（老街＋週末免費導覽）", url: "https://maps.google.com/?q=古町 新潟" },
+          { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
+        ],
+      },
+      {
+        type: "activity",
+        order: 3,
+        name: "ぽんしゅ館 新潟驛店",
+        backups: [
+          { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
+          { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
+        ],
+      },
+      { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
+      { type: "note", text: "爸爸妹妹18:00才抵達，市區觀光順序可視情況調整（例如白天先逛，晚上再一起會合）" },
     ],
   },
   {
@@ -48,8 +74,11 @@ const days = [
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
       {
-        type: "note",
-        text: "取車：ニッポンレンタカー新潟新幹線口店（TEL 050-1712-2869），2026/12/29 09:00，ミニバン（スタッドレス・禁煙車）。異地還車：會津若松還車，見day-11備註",
+        type: "activity",
+        order: 1,
+        name: "取車：ニッポンレンタカー新潟新幹線口店",
+        cost: "2026/12/29 09:00・TEL 050-1712-2869・ミニバン（スタッドレス・禁煙車）",
+        map: { name: "新潟新幹線口店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/650089" },
       },
       { type: "transport", summary: "新潟 → 南魚沼" },
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkIn: "14:00（官網限定方案可提早入住）" },
@@ -73,7 +102,7 @@ const days = [
     id: "day-6",
     date: "2026-12-31",
     weekday: "四",
-    title: "彌彥山・彌彥神社 → 新潟市區（跨年夜）",
+    title: "彌彥山・彌彥神社",
     timeline: [
       {
         type: "activity",
@@ -83,28 +112,7 @@ const days = [
         map: { name: "彌彥山纜車", url: "https://maps.google.com/?q=彌彥山纜車" },
       },
       { type: "note", text: "山頂到彌彥神社御神廟走路約15分鐘，媽媽體力不夠可留在山頂即可" },
-      {
-        type: "activity",
-        order: 2,
-        name: "新潟市區觀光（跨年夜，景點待排）",
-        backups: [
-          { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
-          { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
-          { name: "古町（老街＋週末免費導覽）", url: "https://maps.google.com/?q=古町 新潟" },
-          { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
-        ],
-      },
-      {
-        type: "activity",
-        order: 3,
-        name: "ぽんしゅ館 新潟驛店",
-        backups: [
-          { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
-          { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
-        ],
-      },
-      { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
-      { type: "note", text: "此日行程較滿（彌彥山＋跨年夜市區），時間安排尚未定案" },
+      { type: "note", text: "跨年夜當天目前無晚間行程安排（原新潟市區行程已移至day-3），需另外決定" },
     ],
   },
   {
@@ -184,7 +192,13 @@ const days = [
     title: "會津若松 → 入住猪苗代 ヴィラ イナワシロ",
     timeline: [
       { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-8備註）" },
-      { type: "note", text: "還車：ニッポンレンタカー會津若松店（TEL 050-1712-2894），2027/01/05 14:00 前還車" },
+      {
+        type: "activity",
+        order: 1,
+        name: "還車：ニッポンレンタカー會津若松店",
+        cost: "2027/01/05 14:00 前還車・TEL 050-1712-2894",
+        map: { name: "會津若松店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/710022" },
+      },
       { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
       { type: "note", text: "還車後轉搭以下方式前往猪苗代，交通方式待定，三個選項：①計程車，起跳700円+每260m加100円，粗估整趟約7,000–8,000円（需電話問車行確認）；②電車，磐越西線約25–30分鐘，510円，冬季班次不密集；③可詢問滑雪度假村是否提供會津若松/郡山駅接駁" },
       { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
