@@ -47,7 +47,10 @@ const days = [
     title: "新潟取車 → 南魚沼・入住坂戸城",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
-      { type: "note", text: "在新潟空港取車（豐田租車新潟空港店，異地還車資訊見day-11備註）" },
+      {
+        type: "note",
+        text: "取車：ニッポンレンタカー新潟新幹線口店（TEL 050-1712-2869），2026/12/29 09:00，ミニバン（スタッドレス・禁煙車）。異地還車：會津若松還車，見day-8備註",
+      },
       { type: "transport", summary: "新潟 → 南魚沼" },
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkIn: "14:00（官網限定方案可提早入住）" },
     ],
@@ -143,6 +146,10 @@ const days = [
         map: { name: "第二只見川橋梁", url: "https://maps.google.com/?q=第二只見川橋梁" },
       },
       { type: "note", text: "三點車程都不遠，自駕串連" },
+      {
+        type: "note",
+        text: "還車：ニッポンレンタカー會津若松店（TEL 050-1712-2894），2027/01/02 14:00 前還車 — 注意三個只見線景點＋移動都要在還車前完成，時間偏緊",
+      },
       { type: "note", text: "當晚住宿地點：會津若松地區，目前尚未選定飯店（無候選資料）" },
       { type: "note", text: "此日移動量較大，行程宜抓寬鬆（尚未定案事項）" },
     ],
@@ -172,6 +179,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "五色沼", map: { name: "五色沼", url: "https://maps.google.com/?q=五色沼" } },
       { type: "note", text: "冬季要雪鞋才能走完整段，視媽媽體力調整強度，體力吃緊可考慮開車路過拍照即可" },
+      { type: "note", text: "⚠️ 租車已於day-8（1/2）還車，此日已無車可用，「開車路過拍照」備案需另外調整（例如計程車或放棄此備案）" },
     ],
   },
   {
@@ -183,7 +191,7 @@ const days = [
       { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-8備註）" },
       { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
       { type: "note", text: "交通方式待定，三個選項：①計程車，起跳700円+每260m加100円，粗估整趟約7,000–8,000円（需電話問車行確認）；②電車，磐越西線約25–30分鐘，510円，冬季班次不密集；③可詢問滑雪度假村是否提供會津若松/郡山駅接駁" },
-      { type: "note", text: "租車異地還車：新潟取車 → 會津若松還車（猪苗代當地無可還車門市）。異地還車費參考約8,800円（豐田租車新潟空港店→會津若松駅店，2026–2027年是否有免費活動需另外確認）" },
+      { type: "note", text: "租車已於day-8（1/2）還車，此後行程皆無車可用" },
       { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
     ],
   },
@@ -277,7 +285,8 @@ const accommodations = [
 // paidBy: 只在 paid === "prepaid" 時才有意義
 const budget = {
   items: [
-    { name: "交通", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "交通・租車（ニッポンレンタカー）", total: null, perPerson: null, paid: "prepaid", paidBy: "多" },
+    { name: "交通（其他：電車／計程車等）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿（新潟／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
