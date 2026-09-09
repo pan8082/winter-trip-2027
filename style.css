@@ -351,9 +351,15 @@ body {
   margin-top: 0.3rem;
 }
 
+.accommodation-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
 .accommodation-card__link {
   display: inline-block;
-  margin-top: 0.5rem;
   color: var(--accent);
   font-weight: 700;
   text-decoration: none;

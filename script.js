@@ -8,6 +8,31 @@ const trip = {
   endDate: "2027-01-09",
 };
 
+// 新潟市區晚間彈性備案 — 套用在每一個「當晚住宿在新潟」的日子（除了day-3，那天已經是市區觀光正式行程）
+function niigataEveningBackup() {
+  return [
+    {
+      type: "activity",
+      name: "新潟市區觀光（備案，景點待排）",
+      backups: [
+        { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
+        { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
+        { name: "古町（老街＋週末免費導覽）", url: "https://maps.google.com/?q=古町 新潟" },
+        { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
+      ],
+    },
+    {
+      type: "activity",
+      name: "ぽんしゅ館 新潟驛店",
+      backups: [
+        { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
+        { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
+      ],
+    },
+    { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
+  ];
+}
+
 const days = [
   {
     id: "day-1",
@@ -17,7 +42,7 @@ const days = [
     timeline: [
       { type: "note", text: "新潟集合，部分人可能提早到。入境城市假設為東京（待確認），12/26當天各自從東京銜接新潟的交通方式尚未定案。" },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
-      { type: "note", text: "備案：抵達後若有空檔，可去新潟駅ぽんしゅ館試飲新潟地酒（500円5枚代幣，可試喝新潟縣內近90間酒藏的酒）" },
+      ...niigataEveningBackup(),
     ],
   },
   {
@@ -28,6 +53,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "諏訪田製作所", map: { name: "諏訪田製作所", url: "https://maps.google.com/?q=諏訪田製作所" } },
       { type: "activity", order: 2, name: "玉川堂", map: { name: "玉川堂", url: "https://maps.google.com/?q=玉川堂" } },
+      ...niigataEveningBackup(),
     ],
   },
   {
@@ -95,7 +121,7 @@ const days = [
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（尚未訂房，詳見住宿清單）" },
       { type: "note", text: "此日移動量較大，行程宜精簡（尚未定案事項）" },
-      { type: "note", text: "備案：晚間若還有力氣，新潟駅ぽんしゅ館可順路試酒/採購伴手禮" },
+      ...niigataEveningBackup(),
     ],
   },
   {
@@ -112,7 +138,7 @@ const days = [
         map: { name: "彌彥山纜車", url: "https://maps.google.com/?q=彌彥山纜車" },
       },
       { type: "note", text: "山頂到彌彥神社御神廟走路約15分鐘，媽媽體力不夠可留在山頂即可" },
-      { type: "note", text: "跨年夜當天目前無晚間行程安排（原新潟市區行程已移至day-3），需另外決定" },
+      ...niigataEveningBackup(),
     ],
   },
   {
@@ -123,7 +149,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "白山神社（初詣）", map: { name: "白山神社", url: "https://maps.google.com/?q=白山神社 新潟" } },
       { type: "activity", order: 2, name: "白山公園", map: { name: "白山公園", url: "https://maps.google.com/?q=白山公園 新潟" } },
-      { type: "note", text: "備案：白山公園後若時間允許，可順路去ぽんしゅ館（新潟駅）試酒，當作跨年後的悠閒行程" },
+      ...niigataEveningBackup(),
     ],
   },
   {
@@ -274,6 +300,7 @@ const accommodations = [
     name: "坂戸城",
     address: "〒949-6611 新潟県南魚沼市阪戸292-4",
     mapUrl: "https://maps.google.com/?q=坂戸城 南魚沼",
+    websiteUrl: "https://sakadojo.com/",
     phone: "025-773-3333（訂房專線 0120-373-372）",
     voucher:
       "訂房確認：旬彩の庄 坂戸城，2026/12/29 入住 – 12/30 退房，東館和室（禁煙），5名1晚，官網限定「南魚沼の和食会席」方案，2食付（大人¥19,320 × 5名），合計¥86,940（已折抵¥9,660）。信用卡付款。取消政策：前日起100%取消費，需自行注意退款相關手續費規定。備註：當日將自駕前往，已告知飯店需使用停車場。\n\n（予約番號見訂房確認信，此處不公開顯示）",
@@ -284,9 +311,25 @@ const accommodations = [
     name: "ヴィラ イナワシロ",
     address: "〒969-3102 福島県耶麻郡猪苗代町字葉山7105",
     mapUrl: "https://maps.google.com/?q=ヴィラ イナワシロ 猪苗代",
+    websiteUrl: "http://www.villa.co.jp/",
     phone: "0242-62-4111",
     voucher:
       "訂房確認：ヴィラ イナワシロ（会津・裏磐梯・猪苗代湖畔），分兩筆預訂共接續4晚：2027/01/05–01/08（3連泊）+ 2027/01/08–01/09（1晚），皆為東館和室【禁煙】、觀光拠点に最適プラン、朝夕食付，退房約10:00。房型分配：1號房2人（男1/女1），2號房3人（女3）。金額：3連泊小計198,000円+入湯税2,250円＝200,250円；1晚小計66,000円+入湯税750円＝66,750円，合計267,000円。信用卡付款（帳單顯示「タイムデザイン（旅行予約）」）。交通方式：自駕。取消政策：當日100%、前日50%、2–3日前30%。\n\n（予約番號見訂房確認信，此處不公開顯示）",
+  },
+];
+
+// 交通總覽 — 租車/巴士/新幹線等已預訂的交通服務明細（非每日移動時間，那部分在行程本身呈現）
+const transportServices = [
+  {
+    id: "rental-car",
+    name: "ニッポンレンタカー",
+    category: "租車",
+    detail:
+      "取車：新潟新幹線口店（TEL 050-1712-2869），2026/12/29 09:00\n還車：會津若松店（TEL 050-1712-2894），2027/01/05 14:00 前\n車型：ミニバン（スタッドレス・禁煙車）\n總額 ¥185,570，取車當日才會扣款",
+    links: [
+      { label: "取車店資訊", url: "https://store.nipponrentacar.co.jp/b/nrs/info/650089" },
+      { label: "還車店資訊", url: "https://store.nipponrentacar.co.jp/b/nrs/info/710022" },
+    ],
   },
 ];
 
@@ -318,6 +361,10 @@ const packing = {
 
 const todos = [
   {
+    name: "多",
+    items: ["訂年末年始期間住宿", "訂機票（可以跟三阿姨講我日本時間）", "訂新幹線", "訂剩下的住宿"],
+  },
+  {
     name: "待確認事項",
     items: [
       "出發/入境城市確切安排（假設東京，需與家人確認）",
@@ -345,14 +392,19 @@ function el(tag, className, html) {
   return node;
 }
 
+function groupKey(type) {
+  return type === "transport" || type === "activity" ? "steps" : type;
+}
+
 function groupConsecutive(timeline) {
   const groups = [];
   timeline.forEach((item) => {
+    const key = groupKey(item.type);
     const last = groups[groups.length - 1];
-    if (last && last.type === item.type) {
+    if (last && last.key === key) {
       last.items.push(item);
     } else {
-      groups.push({ type: item.type, items: [item] });
+      groups.push({ key, items: [item] });
     }
   });
   return groups;
@@ -368,16 +420,57 @@ function renderMapPins(map, backups) {
   return `<ul class="map-pins map-pins--inline">${items}</ul>`;
 }
 
-function renderTransportGroup(items) {
+function transportIcon(summary) {
+  if (/自駕|開車|租車/.test(summary)) return "🚗";
+  if (/新幹線/.test(summary)) return "🚄";
+  if (/計程車/.test(summary)) return "🚕";
+  if (/取車|還車/.test(summary)) return "🔑";
+  return "🚃";
+}
+
+function renderTransportStep(t) {
+  const tags = [
+    t.duration ? `<span class="tag tag--cost">${t.duration}</span>` : "",
+    t.cost ? `<span class="tag tag--cost">${t.cost}</span>` : "",
+  ].join("");
+  const tagsRow = tags ? `<div class="activity__meta">${tags}</div>` : "";
+  const stations = t.boarding ? `<div class="activity__meta schedules">上車：${t.boarding} ・ 下車：${t.alighting}</div>` : "";
+  const schedules = t.schedules ? `<div class="activity__meta schedules">${t.schedules.join(" · ")}</div>` : "";
+  return `
+    <div class="activity__name">${transportIcon(t.summary)} ${t.summary}</div>
+    ${tagsRow}
+    ${stations}
+    ${schedules}
+    ${renderMapPins(t.map, t.backups)}
+  `;
+}
+
+function renderActivityStep(a) {
+  const tags = [
+    a.reservation ? `<span class="tag tag--reserve">需預約 ${a.fixedTime || ""}</span>` : "",
+    a.cost ? `<span class="tag tag--cost">${a.cost}</span>` : "",
+  ].join("");
+  const openHours = a.openHours ? `<div class="activity__meta">營業時間 ${a.openHours}</div>` : "";
+  const tagsRow = tags ? `<div class="activity__meta">${tags}</div>` : "";
+  return `
+    <div class="activity__name">${a.name}</div>
+    ${openHours}
+    ${tagsRow}
+    ${renderMapPins(a.map, a.backups)}
+  `;
+}
+
+function renderStepsGroup(items) {
   const rows = items
-    .map((t) => {
-      const duration = t.duration ? `（${t.duration}）` : "";
-      const schedules = t.schedules ? `<div class="schedules">${t.schedules.join(" · ")}</div>` : "";
-      const stations = t.boarding ? `<div class="schedules">上車：${t.boarding} ・ 下車：${t.alighting}</div>` : "";
-      return `<div class="transport-row">${t.summary}${duration}${stations}${schedules}</div>`;
+    .map((item, index) => {
+      const inner = item.type === "transport" ? renderTransportStep(item) : renderActivityStep(item);
+      return `<li class="activity">
+        <div class="activity__order">${index + 1}</div>
+        <div>${inner}</div>
+      </li>`;
     })
     .join("");
-  return `<div class="day-block"><div class="day-block__heading">交通</div>${rows}</div>`;
+  return `<div class="day-block"><div class="day-block__heading">行程</div><ul class="activity-list">${rows}</ul></div>`;
 }
 
 function renderParkingGroup(items) {
@@ -396,45 +489,21 @@ function renderAccommodationGroup(items) {
   return `<div class="day-block"><div class="day-block__heading">住宿</div>${rows}</div>`;
 }
 
-function renderActivityGroup(items) {
-  const rows = items
-    .map((a) => {
-      const tags = [
-        a.reservation ? `<span class="tag tag--reserve">需預約 ${a.fixedTime || ""}</span>` : "",
-        a.cost ? `<span class="tag tag--cost">${a.cost}</span>` : "",
-      ].join("");
-      const openHours = a.openHours ? `<div class="activity__meta">營業時間 ${a.openHours}</div>` : "";
-      const tagsRow = tags ? `<div class="activity__meta">${tags}</div>` : "";
-      return `<li class="activity">
-        <div class="activity__order">${a.order}</div>
-        <div>
-          <div class="activity__name">${a.name}</div>
-          ${openHours}
-          ${tagsRow}
-          ${renderMapPins(a.map, a.backups)}
-        </div>
-      </li>`;
-    })
-    .join("");
-  return `<div class="day-block"><div class="day-block__heading">活動（建議順序）</div><ul class="activity-list">${rows}</ul></div>`;
-}
-
 function renderNoteGroup(items) {
   const rows = items.map((n) => `<div class="day-block__notes">📝 ${n.text}</div>`).join("");
   return `<div class="day-block">${rows}</div>`;
 }
 
 const GROUP_RENDERERS = {
-  transport: renderTransportGroup,
+  steps: renderStepsGroup,
   parking: renderParkingGroup,
   accommodation: renderAccommodationGroup,
-  activity: renderActivityGroup,
   note: renderNoteGroup,
 };
 
 function renderDayTimeline(timeline) {
   return groupConsecutive(timeline)
-    .map((group) => GROUP_RENDERERS[group.type](group.items))
+    .map((group) => GROUP_RENDERERS[group.key](group.items))
     .join("");
 }
 
@@ -472,7 +541,10 @@ function renderAccommodationSection() {
       `
       <div class="accommodation-card__name">${acc.name}</div>
       ${acc.address ? `<div class="accommodation-card__address">${acc.address}</div>` : ""}
-      ${acc.mapUrl ? `<a class="accommodation-card__link" href="${acc.mapUrl}" target="_blank" rel="noopener">在 Google Maps 開啟 →</a>` : ""}
+      <div class="accommodation-card__links">
+        ${acc.mapUrl ? `<a class="accommodation-card__link" href="${acc.mapUrl}" target="_blank" rel="noopener">在 Google Maps 開啟 →</a>` : ""}
+        ${acc.websiteUrl ? `<a class="accommodation-card__link" href="${acc.websiteUrl}" target="_blank" rel="noopener">官方網站 →</a>` : ""}
+      </div>
       ${acc.phone ? `<div class="accommodation-card__address">電話：${acc.phone}</div>` : ""}
       ${acc.voucher ? `<div class="accommodation-card__voucher">${acc.voucher}</div>` : ""}
     `
@@ -484,20 +556,21 @@ function renderAccommodationSection() {
 
 function renderTransportSection() {
   const container = document.getElementById("transport-list");
-  days.forEach((day, index) => {
-    const transportItems = day.timeline.filter((item) => item.type === "transport");
-    transportItems.forEach((t) => {
-      const duration = t.duration ? `（${t.duration}）` : "";
-      const schedules = t.schedules ? `<div class="schedules">${t.schedules.join(" · ")}</div>` : "";
-      container.appendChild(
-        el(
-          "div",
-          "transport-card",
-          `<div class="transport-card__day">DAY ${String(index + 1).padStart(2, "0")} · ${day.date}</div>
-           <div class="transport-row">${t.summary}${duration}${schedules}</div>`
-        )
-      );
-    });
+  transportServices.forEach((service) => {
+    const links = (service.links || [])
+      .map((l) => `<a class="accommodation-card__link" href="${l.url}" target="_blank" rel="noopener">${l.label} →</a>`)
+      .join("");
+    container.appendChild(
+      el(
+        "article",
+        "accommodation-card",
+        `
+        <div class="accommodation-card__name">${service.category}・${service.name}</div>
+        ${links ? `<div class="accommodation-card__links">${links}</div>` : ""}
+        ${service.detail ? `<div class="accommodation-card__voucher">${service.detail}</div>` : ""}
+      `
+      )
+    );
   });
 }
 
