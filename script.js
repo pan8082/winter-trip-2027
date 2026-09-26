@@ -8,6 +8,8 @@ const trip = {
   endDate: "2027-01-09",
 };
 
+const FUKUSHIMA_HORSE_MEAT_NOTE = { type: "note", text: "新潟朋友推薦：福島生馬肉也很有名" };
+
 // 新潟市區晚間彈性備案 — 套用在每一個「當晚住宿在新潟」的日子（除了day-3，那天已經是市區觀光正式行程）
 function niigataEveningBackup() {
   return [
@@ -182,6 +184,7 @@ const days = [
       { type: "note", text: "三點車程都不遠，自駕串連" },
       { type: "note", text: "當晚住宿地點：會津若松地區，目前尚未選定飯店（無候選資料）" },
       { type: "note", text: "此日移動量較大，行程宜抓寬鬆（尚未定案事項）" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -199,6 +202,7 @@ const days = [
         map: { name: "会津さざえ堂", url: "https://maps.google.com/?q=会津さざえ堂" },
       },
       { type: "note", text: "山下有スロープコンベア電動步道代替爬階梯（冬季11/21–3/20，9:00–16:00，降雪時可能停駛）；山下觀光案內所12–3月休館" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -209,6 +213,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "五色沼", map: { name: "五色沼", url: "https://maps.google.com/?q=五色沼" } },
       { type: "note", text: "冬季要雪鞋才能走完整段，視媽媽體力調整強度，體力吃緊可考慮開車路過拍照即可" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -228,6 +233,7 @@ const days = [
       { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
       { type: "note", text: "還車後轉搭以下方式前往猪苗代，交通方式待定，三個選項：①計程車，起跳700円+每260m加100円，粗估整趟約7,000–8,000円（需電話問車行確認）；②電車，磐越西線約25–30分鐘，510円，冬季班次不密集；③可詢問滑雪度假村是否提供會津若松/郡山駅接駁" },
       { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -238,6 +244,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -248,6 +255,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
@@ -258,6 +266,7 @@ const days = [
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
+      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
