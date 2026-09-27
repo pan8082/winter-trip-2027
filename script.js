@@ -585,6 +585,13 @@ const todos = [
     name: "彈性備案景點（未排入行程）",
     items: ["岩室温泉（彌彦/燕三条附近，日歸入浴大人880円，平日17點後660円）", "寺泊魚市場（海景＋海鮮）"],
   },
+  {
+    name: "實用連結",
+    items: [
+      '<a href="https://www.city.niigata.lg.jp/kanko/kanko/kankobus/pamphletdownload.files/20260901_ja_map.pdf" target="_blank" rel="noopener">新潟觀光巴士地圖</a>',
+      '<a href="https://www.saketime.jp/ranking/niigata/" target="_blank" rel="noopener">新潟日本酒排行榜</a>',
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
