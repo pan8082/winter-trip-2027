@@ -517,14 +517,30 @@ function el(tag, className, html) {
   return node;
 }
 
-function groupKey(type) {
-  return type === "transport" || type === "activity" ? "steps" : type;
+// 純粹只有備選、沒有自己確定資訊（map/openHours/cost/reservation）的活動 —
+// 視覺上降級成跟彈性備案筆記一樣的斜體小字，而不是粗體編號活動
+function isBackupOnlyActivity(item) {
+  return (
+    item.type === "activity" &&
+    item.backups &&
+    item.backups.length > 0 &&
+    !item.map &&
+    !item.openHours &&
+    !item.cost &&
+    !item.reservation
+  );
+}
+
+function groupKey(item) {
+  if (item.type === "transport") return "steps";
+  if (item.type === "activity") return isBackupOnlyActivity(item) ? "backupNote" : "steps";
+  return item.type;
 }
 
 function groupConsecutive(timeline) {
   const groups = [];
   timeline.forEach((item) => {
-    const key = groupKey(item.type);
+    const key = groupKey(item);
     const last = groups[groups.length - 1];
     if (last && last.key === key) {
       last.items.push(item);
@@ -587,15 +603,22 @@ function renderActivityStep(a) {
 
 function renderStepsGroup(items) {
   const rows = items
-    .map((item, index) => {
+    .map((item) => {
       const inner = item.type === "transport" ? renderTransportStep(item) : renderActivityStep(item);
       return `<li class="activity">
-        <div class="activity__order">${index + 1}</div>
+        <div class="activity__order">${item._stepNumber}</div>
         <div>${inner}</div>
       </li>`;
     })
     .join("");
   return `<div class="day-block"><div class="day-block__heading">行程</div><ul class="activity-list">${rows}</ul></div>`;
+}
+
+function renderBackupNoteGroup(items) {
+  const rows = items
+    .map((a) => `<div class="day-block__notes">📝 ${a.name}${renderMapPins(null, a.backups)}</div>`)
+    .join("");
+  return `<div class="day-block">${rows}</div>`;
 }
 
 function renderParkingGroup(items) {
@@ -621,12 +644,20 @@ function renderNoteGroup(items) {
 
 const GROUP_RENDERERS = {
   steps: renderStepsGroup,
+  backupNote: renderBackupNoteGroup,
   parking: renderParkingGroup,
   accommodation: renderAccommodationGroup,
   note: renderNoteGroup,
 };
 
 function renderDayTimeline(timeline) {
+  let stepCounter = 0;
+  timeline.forEach((item) => {
+    if (groupKey(item) === "steps") {
+      stepCounter += 1;
+      item._stepNumber = stepCounter;
+    }
+  });
   return groupConsecutive(timeline)
     .map((group) => GROUP_RENDERERS[group.key](group.items))
     .join("");
