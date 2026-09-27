@@ -467,7 +467,7 @@ const accommodations = [
     address: "〒965-0872 福島県会津若松市東栄町8-12",
     mapUrl: "https://maps.google.com/?q=会津鶴ヶ城STAY 会津若松",
     phone: "050-3645-1885",
-    voucher: "会津鶴ヶ城STAY by 会津七日町INN，一棟貸し（2026年開業），2027/01/02 入住 – 01/05 退房（3晚）。步行約2分即達鶴ヶ城，離飯盛山約3.3km。價格/訂房明細待補。",
+    voucher: "会津鶴ヶ城STAY by 会津七日町INN，一棟貸し（2026年開業），2027/01/02 入住 – 01/05 退房（3晚），合計¥88,567（Agoda訂房）。步行約2分即達鶴ヶ城，離飯盛山約3.3km。訂房明細於Agoda App內查看，此處不公開顯示。",
   },
   {
     id: "acc-inawashiro",
@@ -514,7 +514,7 @@ const budget = {
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
     { name: "住宿（新潟第一段，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
-    { name: "住宿・會津若松 会津鶴ヶ城STAY", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿・會津若松 会津鶴ヶ城STAY", total: 88567, perPerson: 17713, paid: "prepaid", paidBy: "多" },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
