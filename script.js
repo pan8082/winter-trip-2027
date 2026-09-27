@@ -533,7 +533,7 @@ function isBackupOnlyActivity(item) {
 
 function groupKey(item) {
   if (item.type === "transport") return "steps";
-  if (item.type === "activity") return isBackupOnlyActivity(item) ? "backupNote" : "steps";
+  if (item.type === "activity") return isBackupOnlyActivity(item) ? "note" : "steps";
   return item.type;
 }
 
@@ -614,13 +614,6 @@ function renderStepsGroup(items) {
   return `<div class="day-block"><div class="day-block__heading">行程</div><ul class="activity-list">${rows}</ul></div>`;
 }
 
-function renderBackupNoteGroup(items) {
-  const rows = items
-    .map((a) => `<div class="day-block__notes">📝 ${a.name}${renderMapPins(null, a.backups)}</div>`)
-    .join("");
-  return `<div class="day-block">${rows}</div>`;
-}
-
 function renderParkingGroup(items) {
   const rows = items.map((p) => `<div class="transport-row">${p.detail}</div>`).join("");
   return `<div class="day-block"><div class="day-block__heading">停車資訊</div>${rows}</div>`;
@@ -638,13 +631,18 @@ function renderAccommodationGroup(items) {
 }
 
 function renderNoteGroup(items) {
-  const rows = items.map((n) => `<div class="day-block__notes">📝 ${n.text}</div>`).join("");
+  const rows = items
+    .map((item) =>
+      item.type === "note"
+        ? `<div class="day-block__notes">📝 ${item.text}</div>`
+        : `<div class="day-block__notes">📝 ${item.name}${renderMapPins(null, item.backups)}</div>`
+    )
+    .join("");
   return `<div class="day-block">${rows}</div>`;
 }
 
 const GROUP_RENDERERS = {
   steps: renderStepsGroup,
-  backupNote: renderBackupNoteGroup,
   parking: renderParkingGroup,
   accommodation: renderAccommodationGroup,
   note: renderNoteGroup,
