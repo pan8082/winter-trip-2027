@@ -4,13 +4,13 @@
 // ---------------------------------------------------------------------------
 
 const trip = {
-  startDate: "2026-12-26",
+  startDate: "2026-12-25",
   endDate: "2027-01-09",
 };
 
 const FUKUSHIMA_HORSE_MEAT_NOTE = { type: "note", text: "新潟朋友推薦：福島生馬肉也很有名" };
 
-// 新潟市區晚間彈性備案 — 套用在每一個「當晚住宿在新潟」的日子（除了day-3，那天已經是市區觀光正式行程）
+// 新潟市區晚間彈性備案 — 套用在每一個「當晚住宿在新潟」的日子（除了day-3沼垂、day-4市區會合，那兩天已經是市區觀光正式行程）
 function niigataEveningBackup() {
   return [
     {
@@ -38,19 +38,19 @@ function niigataEveningBackup() {
 const days = [
   {
     id: "day-1",
-    date: "2026-12-26",
-    weekday: "六",
-    title: "集合日（新潟）",
+    date: "2026-12-25",
+    weekday: "五",
+    title: "從東京出發・新潟市區（詳細再訂）",
     timeline: [
-      { type: "note", text: "新潟集合，部分人可能提早到。入境城市假設為東京（待確認），12/26當天各自從東京銜接新潟的交通方式尚未定案。" },
+      { type: "note", text: "從東京出發前往新潟，交通方式尚未確定（新幹線／巴士，詳細再訂）。部分人可能提早到。" },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
       ...niigataEveningBackup(),
     ],
   },
   {
     id: "day-2",
-    date: "2026-12-27",
-    weekday: "日",
+    date: "2026-12-26",
+    weekday: "六",
     title: "燕三条職人工坊",
     timeline: [
       { type: "activity", order: 1, name: "諏訪田製作所", map: { name: "諏訪田製作所", url: "https://maps.google.com/?q=諏訪田製作所" } },
@@ -60,6 +60,21 @@ const days = [
   },
   {
     id: "day-3",
+    date: "2026-12-27",
+    weekday: "日",
+    title: "逛沼垂一帶",
+    timeline: [
+      {
+        type: "activity",
+        order: 1,
+        name: "沼垂テラス商店街周邊（景點待排）",
+        map: { name: "沼垂テラス商店街", url: "https://maps.google.com/?q=沼垂テラス商店街" },
+      },
+      { type: "note", text: "細節尚未定案，可安排半天悠閒逛沼垂一帶（玻璃工藝體驗、小店、咖啡廳等）" },
+    ],
+  },
+  {
+    id: "day-4",
     date: "2026-12-28",
     weekday: "一",
     title: "新潟市區觀光・與爸爸妹妹會合",
@@ -95,7 +110,7 @@ const days = [
     ],
   },
   {
-    id: "day-4",
+    id: "day-5",
     date: "2026-12-29",
     weekday: "二",
     title: "新潟取車 → 南魚沼・入住坂戸城",
@@ -113,7 +128,7 @@ const days = [
     ],
   },
   {
-    id: "day-5",
+    id: "day-6",
     date: "2026-12-30",
     weekday: "三",
     title: "南魚沼 → 新潟（移動日）",
@@ -127,7 +142,7 @@ const days = [
     ],
   },
   {
-    id: "day-6",
+    id: "day-7",
     date: "2026-12-31",
     weekday: "四",
     title: "彌彥山・彌彥神社",
@@ -144,7 +159,7 @@ const days = [
     ],
   },
   {
-    id: "day-7",
+    id: "day-8",
     date: "2027-01-01",
     weekday: "五",
     title: "白山神社・白山公園（初詣）",
@@ -155,7 +170,7 @@ const days = [
     ],
   },
   {
-    id: "day-8",
+    id: "day-9",
     date: "2027-01-02",
     weekday: "六",
     title: "只見線景觀 → 會津若松（移動日）",
@@ -188,7 +203,7 @@ const days = [
     ],
   },
   {
-    id: "day-9",
+    id: "day-10",
     date: "2027-01-03",
     weekday: "日",
     title: "飯盛山・会津さざえ堂",
@@ -206,7 +221,7 @@ const days = [
     ],
   },
   {
-    id: "day-10",
+    id: "day-11",
     date: "2027-01-04",
     weekday: "一",
     title: "五色沼（雪鞋）",
@@ -217,12 +232,12 @@ const days = [
     ],
   },
   {
-    id: "day-11",
+    id: "day-12",
     date: "2027-01-05",
     weekday: "二",
     title: "會津若松 → 入住猪苗代 ヴィラ イナワシロ",
     timeline: [
-      { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-8備註）" },
+      { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-9備註）" },
       {
         type: "activity",
         order: 1,
@@ -237,40 +252,37 @@ const days = [
     ],
   },
   {
-    id: "day-12",
+    id: "day-13",
     date: "2027-01-06",
     weekday: "三",
     title: "滑雪 Day 1",
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
-      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
-    id: "day-13",
+    id: "day-14",
     date: "2027-01-07",
     weekday: "四",
     title: "滑雪 Day 2",
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
-      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
-    id: "day-14",
+    id: "day-15",
     date: "2027-01-08",
     weekday: "五",
     title: "滑雪 Day 3",
     timeline: [
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
-      FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
   {
-    id: "day-15",
+    id: "day-16",
     date: "2027-01-09",
     weekday: "六",
     title: "賦歸",
@@ -371,7 +383,7 @@ const packing = {
 const todos = [
   {
     name: "多",
-    items: ["訂年末年始期間住宿", "訂機票（可以跟三阿姨講我日本時間）", "訂新幹線", "訂剩下的住宿"],
+    items: ["訂年末年始期間住宿", "訂機票（可以跟三阿姨講我日本時間）", "訂新幹線", "訂剩下的住宿", "查買二手滑雪裝備的地方"],
   },
   {
     name: "待確認事項",
