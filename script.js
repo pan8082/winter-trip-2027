@@ -19,8 +19,6 @@ function niigataEveningBackup() {
       backups: [
         { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
         { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
-        { name: "古町（老街＋週末免費導覽）", url: "https://maps.google.com/?q=古町 新潟" },
-        { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
       ],
     },
     {
@@ -44,6 +42,20 @@ const days = [
     timeline: [
       { type: "note", text: "從東京出發前往新潟，交通方式尚未確定（新幹線／巴士，詳細再訂）。部分人可能提早到。" },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
+      {
+        type: "activity",
+        name: "新潟市旧齋藤家別邸",
+        openHours: "冬季9:30–17:00（最終入館16:30）。查過2026年開館日曆，12/27–1/2為年末年始長休，12/25、26仍開館，需趁這天造訪",
+        cost: "門票¥300",
+        map: { name: "新潟市旧齋藤家別邸", url: "https://maps.google.com/?q=新潟市旧齋藤家別邸" },
+      },
+      {
+        type: "activity",
+        name: "砂丘館（旧日本銀行新潟支店長役宅）",
+        openHours: "冬季（約12/9–3/22）9:00–19:00，週一休館，另有年末年始及不定期臨時休館（12/25應不受影響）",
+        cost: "免費入館",
+        map: { name: "砂丘館", url: "https://maps.google.com/?q=砂丘館" },
+      },
       {
         type: "activity",
         name: "新潟駅周邊晚餐（選項，待抵達時間確定再挑）",
@@ -166,7 +178,6 @@ const days = [
         backups: [
           { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
           { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
-          { name: "沼垂テラス商店街（玻璃工藝體驗）", url: "https://maps.google.com/?q=沼垂テラス商店街" },
         ],
       },
       {
@@ -253,22 +264,6 @@ const days = [
         name: "ヤスダヨーグルトベーカリーLECHE",
         openHours: "11:00–17:30，週三休",
         map: { name: "ヤスダヨーグルトベーカリーLECHE", url: "https://maps.google.com/?q=ヤスダヨーグルトベーカリーLECHE" },
-      },
-      {
-        type: "activity",
-        order: 4,
-        name: "新潟市旧齋藤家別邸",
-        openHours: "冬季9:30–17:00（最終入館16:30），週一休館",
-        cost: "門票¥300",
-        map: { name: "新潟市旧齋藤家別邸", url: "https://maps.google.com/?q=新潟市旧齋藤家別邸" },
-      },
-      {
-        type: "activity",
-        order: 5,
-        name: "砂丘館（旧日本銀行新潟支店長役宅）",
-        openHours: "冬季開館至約19:00（確切時間依當月公告），週一休館",
-        cost: "免費入館",
-        map: { name: "砂丘館", url: "https://maps.google.com/?q=砂丘館" },
       },
       ...niigataEveningBackup(),
     ],
