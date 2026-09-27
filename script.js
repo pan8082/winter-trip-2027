@@ -38,9 +38,8 @@ const days = [
     id: "day-1",
     date: "2026-12-25",
     weekday: "五",
-    title: "從東京出發・新潟市區（詳細再訂）",
+    title: "從東京出發・新潟市區",
     timeline: [
-      { type: "note", text: "起點：東京的Log入谷出發（11/20開放訂票，尚未購票）。部分人可能提早到，屆時視情況調整集合時間" },
       {
         type: "transport",
         summary: "東京 → 新潟（新幹線とき317號）",
@@ -92,7 +91,7 @@ const days = [
         summary: "新潟 → 燕三条（新幹線＋計程車）",
         duration: "新幹線約11分鐘（40.1km）＋計程車約5分鐘（2.6km）",
         cost: "新幹線¥1,690／人（IC卡價）",
-        schedules: ["とき322號 13:23新潟發→13:34燕三条著", "とき324號 14:27新潟發→14:38燕三条著"],
+        schedules: ["とき316號 10:28新潟發→10:39燕三条著", "とき318號 11:25新潟發→11:36燕三条著"],
       },
       {
         type: "activity",
@@ -118,6 +117,13 @@ const days = [
         openHours: "物産館9:30–17:30，每月第一個週三休館",
         cost: "免費入館",
         map: { name: "燕三条地場産業振興センター", url: "https://maps.google.com/?q=燕三条地場産業振興センター" },
+      },
+      {
+        type: "transport",
+        summary: "燕三条 → 新潟（新幹線）",
+        duration: "約11–12分鐘（40.1km）",
+        cost: "¥1,690／人（IC卡價）",
+        schedules: ["とき327號 17:30發→17:42著", "とき329號 18:02發→18:13著", "とき331號 18:30發→18:42著"],
       },
       ...niigataEveningBackup(),
     ],
@@ -225,8 +231,6 @@ const days = [
         ],
       },
       { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
-      { type: "note", text: "爸爸妹妹18:00才抵達，市區觀光順序可視情況調整（例如白天先逛，晚上一起吃喜ぐち會合）" },
-      { type: "note", text: "此日已排入田中屋本店/本町鈴木鮮魚/ピアBandai/喜ぐち，行程偏滿，可視情況精簡" },
     ],
   },
   {
@@ -245,7 +249,7 @@ const days = [
         map: { name: "新潟新幹線口店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/650089" },
       },
       { type: "hop", text: "開車約1小時31分（124km，經北陸自動車道・関越自動車道）" },
-      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkIn: "14:00（官網限定方案可提早入住）" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城（泡溫泉，晚餐南魚沼の和食会席）", checkIn: "14:00（官網限定方案可提早入住）" },
     ],
   },
   {
@@ -254,13 +258,11 @@ const days = [
     weekday: "三",
     title: "南魚沼 → 新潟（移動日）",
     timeline: [
-      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkOut: "09:00" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城（吃早餐）", checkOut: "09:00" },
       { type: "hop", text: "開車約12分鐘（9.1km，經国道291号）" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "hop", text: "開車約2–2.5小時（南魚沼 → 新潟）" },
       { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
-      { type: "note", text: "此日移動量較大，行程宜精簡（尚未定案事項）" },
-      ...niigataEveningBackup(),
     ],
   },
   {
@@ -333,10 +335,8 @@ const days = [
         name: "第二只見川橋梁（会津西方駅附近）",
         map: { name: "第二只見川橋梁", url: "https://maps.google.com/?q=第二只見川橋梁" },
       },
-      { type: "note", text: "三點車程都不遠，自駕串連" },
       { type: "hop", text: "開車約46分鐘（41.6km，經磐越自動車道・国道252号）" },
       { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
-      { type: "note", text: "此日移動量較大，行程宜抓寬鬆（尚未定案事項）" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
   },
