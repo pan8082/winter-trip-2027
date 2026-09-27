@@ -243,6 +243,7 @@ const days = [
     title: "彌彥山・彌彥神社",
     timeline: [
       { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
+      { type: "hop", text: "開車 約52分鐘（35.3km，經国道402号・県道2号）" },
       {
         type: "activity",
         order: 1,
@@ -546,7 +547,7 @@ function isBackupOnlyActivity(item) {
 }
 
 function groupKey(item) {
-  if (item.type === "transport" || item.type === "accommodation") return "steps";
+  if (item.type === "transport" || item.type === "accommodation" || item.type === "hop") return "steps";
   if (item.type === "activity") return isBackupOnlyActivity(item) ? "note" : "steps";
   return item.type;
 }
@@ -629,6 +630,12 @@ function renderAccommodationStep(a) {
 function renderStepsGroup(items) {
   const rows = items
     .map((item) => {
+      if (item.type === "hop") {
+        return `<li class="activity activity--hop">
+          <div class="activity__order activity__order--hop">・</div>
+          <div class="activity__hop-text">${item.text}</div>
+        </li>`;
+      }
       const inner =
         item.type === "transport"
           ? renderTransportStep(item)
@@ -669,7 +676,7 @@ const GROUP_RENDERERS = {
 function renderDayTimeline(timeline) {
   let stepCounter = 0;
   timeline.forEach((item) => {
-    if (groupKey(item) === "steps") {
+    if (groupKey(item) === "steps" && item.type !== "hop") {
       stepCounter += 1;
       item._stepNumber = stepCounter;
     }

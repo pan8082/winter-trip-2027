@@ -259,6 +259,23 @@ body {
   justify-content: center;
 }
 
+.activity--hop {
+  min-height: 1.5rem;
+}
+
+.activity__order--hop {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.activity__hop-text {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+
 .activity__name {
   font-weight: 700;
 }
