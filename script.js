@@ -157,12 +157,6 @@ const days = [
       {
         type: "activity",
         order: 1,
-        name: "爸爸、妹妹抵達新潟，會合",
-        cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
-      },
-      {
-        type: "activity",
-        order: 2,
         name: "田中屋本店 みなと工房",
         openHours: "9:00–18:00（年中無休，除元旦）",
         map: { name: "田中屋本店 みなと工房", url: "https://maps.google.com/?q=田中屋本店 みなと工房" },
@@ -170,7 +164,7 @@ const days = [
       { type: "hop", text: "開車/計程車約7分鐘（2.6km）" },
       {
         type: "activity",
-        order: 3,
+        order: 2,
         name: "本町鈴木鮮魚",
         openHours: "9:00–17:00，週四・每月第3週三休",
         map: { name: "本町鈴木鮮魚", url: "https://maps.google.com/?q=本町鈴木鮮魚" },
@@ -178,14 +172,14 @@ const days = [
       { type: "hop", text: "開車/計程車約5分鐘（2.1km）" },
       {
         type: "activity",
-        order: 4,
+        order: 3,
         name: "みなとのマルシェ ピアBandai",
         openHours: "9:00–19:00（各店略有不同，年中無休）",
         map: { name: "ピアBandai", url: "https://maps.google.com/?q=ピアBandai" },
       },
       {
         type: "activity",
-        order: 5,
+        order: 4,
         name: "新潟市區觀光（景點待排）",
         backups: [
           { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
@@ -193,6 +187,12 @@ const days = [
         ],
       },
       { type: "hop", text: "開車/計程車約6分鐘（1.9km）" },
+      {
+        type: "activity",
+        order: 5,
+        name: "爸爸、妹妹抵達新潟，會合",
+        cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
+      },
       {
         type: "activity",
         order: 6,
@@ -229,7 +229,7 @@ const days = [
         cost: "2026/12/29 09:00・TEL 050-1712-2869・ミニバン（スタッドレス・禁煙車）",
         map: { name: "新潟新幹線口店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/650089" },
       },
-      { type: "transport", summary: "新潟 → 南魚沼" },
+      { type: "hop", text: "開車約1小時31分（124km，經北陸自動車道・関越自動車道）" },
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkIn: "14:00（官網限定方案可提早入住）" },
     ],
   },
@@ -240,8 +240,9 @@ const days = [
     title: "南魚沼 → 新潟（移動日）",
     timeline: [
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkOut: "09:00" },
-      { type: "transport", summary: "南魚沼 → 新潟", duration: "約2–2.5小時" },
+      { type: "hop", text: "開車約12分鐘（9.1km，經国道291号）" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
+      { type: "hop", text: "開車約2–2.5小時（南魚沼 → 新潟）" },
       { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
       { type: "note", text: "此日移動量較大，行程宜精簡（尚未定案事項）" },
       ...niigataEveningBackup(),
@@ -296,7 +297,7 @@ const days = [
     timeline: [
       { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）", checkOut: null },
       { type: "note", text: "備案：離開新潟前，可在新潟駅ぽんしゅ館做最後採購（新潟地酒/伴手禮，之後就進福島縣了）" },
-      { type: "transport", summary: "新潟 → 只見線沿線 → 會津若松" },
+      { type: "hop", text: "開車約1小時26分（101km，經磐越自動車道，之後就進福島縣了）" },
       {
         type: "activity",
         order: 1,
@@ -318,6 +319,7 @@ const days = [
         map: { name: "第二只見川橋梁", url: "https://maps.google.com/?q=第二只見川橋梁" },
       },
       { type: "note", text: "三點車程都不遠，自駕串連" },
+      { type: "hop", text: "開車約46分鐘（41.6km，經磐越自動車道・国道252号）" },
       { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
       { type: "note", text: "此日移動量較大，行程宜抓寬鬆（尚未定案事項）" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
@@ -330,6 +332,7 @@ const days = [
     title: "飯盛山・会津さざえ堂",
     timeline: [
       { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
+      { type: "hop", text: "開車約7分鐘（4.1km，經北出丸大通り）" },
       {
         type: "activity",
         order: 1,
@@ -349,6 +352,7 @@ const days = [
     title: "五色沼（雪鞋）",
     timeline: [
       { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
+      { type: "hop", text: "開車約43分鐘（41.1km，經磐越自動車道・県道2号）" },
       { type: "activity", order: 1, name: "五色沼", map: { name: "五色沼", url: "https://maps.google.com/?q=五色沼" } },
       { type: "note", text: "冬季要雪鞋才能走完整段，視媽媽體力調整強度，體力吃緊可考慮開車路過拍照即可" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
@@ -368,8 +372,7 @@ const days = [
         cost: "2027/01/05 14:00 前還車・TEL 050-1712-2894",
         map: { name: "會津若松店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/710022" },
       },
-      { type: "transport", summary: "會津若松 → 猪苗代", duration: "約19.6km" },
-      { type: "note", text: "還車後轉搭以下方式前往猪苗代，交通方式待定，三個選項：①計程車，起跳700円+每260m加100円，粗估整趟約7,000–8,000円（需電話問車行確認）；②電車，磐越西線約25–30分鐘，510円，冬季班次不密集；③可詢問滑雪度假村是否提供會津若松/郡山駅接駁" },
+      { type: "hop", text: "計程車約25–30分鐘（19.6km，起跳700円+每260m加100円，粗估車資7,000–8,000円）" },
       { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
@@ -411,7 +414,7 @@ const days = [
     id: "day-16",
     date: "2027-01-09",
     weekday: "六",
-    title: "賦歸",
+    title: "回家賺錢下次再來",
     timeline: [
       { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ", checkOut: "~10:00" },
       { type: "note", text: "checkout，賦歸" },
