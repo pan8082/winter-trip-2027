@@ -211,7 +211,8 @@ const days = [
       {
         type: "activity",
         order: 5,
-        name: "爸爸、妹妹抵達新潟，會合（機場地酒水龍頭，搭巴士到車站）",
+        name: "爸爸、妹妹抵達新潟，會合",
+        note: "機場地酒水龍頭，搭巴士到車站",
         cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
       },
       {
@@ -249,7 +250,7 @@ const days = [
         map: { name: "新潟新幹線口店", url: "https://store.nipponrentacar.co.jp/b/nrs/info/650089" },
       },
       { type: "hop", text: "開車約1小時31分（124km，經北陸自動車道・関越自動車道）" },
-      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城（泡溫泉，晚餐南魚沼の和食会席）", checkIn: "14:00（官網限定方案可提早入住）" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", note: "泡溫泉，晚餐南魚沼の和食会席", checkIn: "14:00（官網限定方案可提早入住）" },
     ],
   },
   {
@@ -258,7 +259,7 @@ const days = [
     weekday: "三",
     title: "南魚沼 → 新潟（移動日）",
     timeline: [
-      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城（吃早餐）", checkOut: "09:00" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", note: "吃早餐", checkOut: "09:00" },
       { type: "hop", text: "開車約12分鐘（9.1km，經国道291号）" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "hop", text: "開車約2–2.5小時（南魚沼 → 新潟）" },
@@ -664,10 +665,12 @@ function renderActivityStep(a) {
     a.reservation ? `<span class="tag tag--reserve">需預約 ${a.fixedTime || ""}</span>` : "",
     a.cost ? `<span class="tag tag--cost">${a.cost}</span>` : "",
   ].join("");
+  const note = a.note ? `<div class="activity__meta">${a.note}</div>` : "";
   const openHours = a.openHours ? `<div class="activity__meta">營業時間 ${a.openHours}</div>` : "";
   const tagsRow = tags ? `<div class="activity__meta">${tags}</div>` : "";
   return `
     <div class="activity__name">${a.name}</div>
+    ${note}
     ${openHours}
     ${tagsRow}
     ${renderMapPins(a.map, a.backups)}
@@ -678,9 +681,11 @@ function renderAccommodationStep(a) {
   const checkIn = a.checkIn ? `<span class="tag tag--cost">入住 ${a.checkIn}</span>` : "";
   const checkOut = a.checkOut ? `<span class="tag tag--cost">退房 ${a.checkOut}</span>` : "";
   const tagsRow = checkIn || checkOut ? `<div class="activity__meta">${checkIn}${checkOut}</div>` : "";
+  const note = a.note ? `<div class="activity__meta">${a.note}</div>` : "";
   const nameHtml = a.id ? `<a href="#${a.id}">${a.name} →</a>` : a.name;
   return `
     <div class="activity__name">🏨 ${nameHtml}</div>
+    ${note}
     ${tagsRow}
   `;
 }
