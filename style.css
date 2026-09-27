@@ -280,6 +280,11 @@ body {
   font-weight: 700;
 }
 
+.activity__name a {
+  color: var(--navy);
+  text-decoration: none;
+}
+
 .activity__meta {
   font-size: 0.82rem;
   color: var(--muted);
@@ -474,6 +479,10 @@ body {
   margin-left: 0.4rem;
   padding: 0;
   cursor: pointer;
+}
+
+.budget-table tr.row--expanded td {
+  border-bottom: none;
 }
 
 .budget-breakdown-row td {

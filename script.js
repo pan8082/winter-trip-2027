@@ -545,7 +545,15 @@ const budget = {
       paidBy: null,
     },
     { name: "交通（其他：電車／計程車等）", total: null, perPerson: null, paid: null, paidBy: null },
-    { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
+    {
+      name: "住宿・坂戸城",
+      total: 86940,
+      perPerson: 19320,
+      perPersonNote: "拔麻的是多贊助",
+      sponsorship: { by: "多", covers: ["爸爸", "媽媽"] },
+      paid: "prepaid",
+      paidBy: "多",
+    },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
     {
@@ -834,14 +842,24 @@ const ALL_TRAVELERS = ["多", "媽媽", "阿姨", "爸爸", "妹妹"];
 function personShares(item) {
   if (typeof item.total !== "number") return null;
   const people = item.people || ALL_TRAVELERS;
-  const share = item.total / people.length;
-  return ALL_TRAVELERS.map((name) => ({ name, amount: people.includes(name) ? share : null }));
+  const baseShare = item.total / people.length;
+  const covers = (item.sponsorship && item.sponsorship.covers) || [];
+  const sponsor = item.sponsorship && item.sponsorship.by;
+  return ALL_TRAVELERS.map((name) => {
+    if (!people.includes(name)) return { name, amount: null };
+    if (covers.includes(name)) return { name, amount: 0, sponsored: true };
+    if (name === sponsor) return { name, amount: baseShare * (1 + covers.length) };
+    return { name, amount: baseShare };
+  });
 }
 
 function renderShareBreakdownRow(shares, colspan) {
   if (!shares) return "";
   const chips = shares
-    .map((s) => `<span class="tag tag--cost">${s.name} ${s.amount != null ? formatMoney(Math.round(s.amount)) : "不分攤"}</span>`)
+    .map((s) => {
+      const label = s.amount == null ? "不分攤" : s.sponsored ? "多贊助" : formatMoney(Math.round(s.amount));
+      return `<span class="tag tag--cost">${s.name} ${label}</span>`;
+    })
     .join("");
   return `<tr class="budget-breakdown-row" hidden><td colspan="${colspan}"><div class="budget-breakdown">${chips}</div></td></tr>`;
 }
@@ -908,11 +926,13 @@ function renderBudgetSection() {
 
   wrapper.querySelectorAll(".budget-toggle").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const row = btn.closest("tr").nextElementSibling;
+      const itemRow = btn.closest("tr");
+      const row = itemRow.nextElementSibling;
       if (!row) return;
       const willShow = row.hidden;
       row.hidden = !willShow;
       btn.textContent = willShow ? "▾" : "▸";
+      itemRow.classList.toggle("row--expanded", willShow);
     });
   });
 }
