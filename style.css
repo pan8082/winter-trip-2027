@@ -320,8 +320,9 @@ body {
 }
 
 .map-pins--inline {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   font-size: 0.85rem;
+  gap: 0.55rem;
 }
 
 .map-pin a {
@@ -344,7 +345,12 @@ body {
 .day-block__notes {
   font-size: 0.9rem;
   color: var(--muted);
-  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.7rem;
+}
+
+.day-block__notes:last-child {
+  margin-bottom: 0;
 }
 
 /* Accommodation section */

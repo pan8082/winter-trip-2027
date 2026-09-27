@@ -537,6 +537,14 @@ const transportServices = [
 const budget = {
   items: [
     {
+      name: "交通・新幹線（東京→新潟，とき317）",
+      total: 32940,
+      perPerson: 10980,
+      people: ["多", "媽媽", "阿姨"],
+      paid: null,
+      paidBy: null,
+    },
+    {
       name: "交通・租車（ニッポンレンタカー）",
       total: 185570,
       perPerson: 37114,
