@@ -548,7 +548,15 @@ const budget = {
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
-    { name: "住宿・新潟 Comfort Hotel 新潟駅前", total: 53432, perPerson: 17811, paid: "prepaid", paidBy: "多" },
+    {
+      name: "住宿・新潟 Comfort Hotel 新潟駅前",
+      total: 53432,
+      perPerson: 17811,
+      perPersonNote: "僅多/媽媽/阿姨3人分攤（爸爸妹妹12/28才抵達）",
+      people: ["多", "媽媽", "阿姨"],
+      paid: "prepaid",
+      paidBy: "多",
+    },
     { name: "住宿・新潟 Hotel Global View", total: 27329, perPerson: 5466, paid: "prepaid", paidBy: "多" },
     { name: "住宿・會津若松 会津鶴ヶ城STAY", total: 88567, perPerson: 17713, paid: "prepaid", paidBy: "多" },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
@@ -821,6 +829,23 @@ function formatMoney(n) {
   return typeof n === "number" ? `¥${n.toLocaleString()}` : null;
 }
 
+const ALL_TRAVELERS = ["多", "媽媽", "阿姨", "爸爸", "妹妹"];
+
+function personShares(item) {
+  if (typeof item.total !== "number") return null;
+  const people = item.people || ALL_TRAVELERS;
+  const share = item.total / people.length;
+  return ALL_TRAVELERS.map((name) => ({ name, amount: people.includes(name) ? share : null }));
+}
+
+function renderShareBreakdownRow(shares, colspan) {
+  if (!shares) return "";
+  const chips = shares
+    .map((s) => `<span class="tag tag--cost">${s.name} ${s.amount != null ? formatMoney(Math.round(s.amount)) : "不分攤"}</span>`)
+    .join("");
+  return `<tr class="budget-breakdown-row" hidden><td colspan="${colspan}"><div class="budget-breakdown">${chips}</div></td></tr>`;
+}
+
 function renderBudgetSection() {
   const container = document.getElementById("budget-list");
   const paidLabels = { prepaid: "已先付", onsite: "現場付" };
@@ -832,18 +857,31 @@ function renderBudgetSection() {
       const perPersonNote = item.perPersonNote ? `<div class="budget-table__note">${item.perPersonNote}</div>` : "";
       const paidLabel = paidLabels[item.paid] || "待定";
       const paidByLabel = item.paid === "prepaid" && item.paidBy ? item.paidBy : "—";
-      return `<tr>
+      const shares = personShares(item);
+      const toggle = shares ? `<button class="budget-toggle" type="button" aria-label="展開每人金額">▸</button>` : "";
+      return (
+        `<tr>
         <td>${item.name}</td>
         <td class="${total ? "" : "cell--missing"}">${total || "待補"}</td>
-        <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}${perPersonNote}</td>
+        <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}${perPersonNote}${toggle}</td>
         <td>${paidLabel}</td>
         <td>${paidByLabel}</td>
-      </tr>`;
+      </tr>` + renderShareBreakdownRow(shares, 5)
+      );
     })
     .join("");
 
   const knownTotal = budget.items.reduce((sum, i) => sum + (typeof i.total === "number" ? i.total : 0), 0);
-  const knownPerPerson = budget.items.reduce((sum, i) => sum + (typeof i.perPerson === "number" ? i.perPerson : 0), 0);
+  const totalsByPerson = {};
+  ALL_TRAVELERS.forEach((name) => (totalsByPerson[name] = 0));
+  budget.items.forEach((item) => {
+    const shares = personShares(item);
+    if (!shares) return;
+    shares.forEach((s) => {
+      if (s.amount != null) totalsByPerson[s.name] += s.amount;
+    });
+  });
+  const footerShares = ALL_TRAVELERS.map((name) => ({ name, amount: totalsByPerson[name] }));
   const hasMissing = budget.items.some((i) => typeof i.total !== "number");
 
   const wrapper = el(
@@ -858,14 +896,25 @@ function renderBudgetSection() {
         <tr class="budget-table__total">
           <td>合計${hasMissing ? "（不含待補）" : ""}</td>
           <td>¥${knownTotal.toLocaleString()}</td>
-          <td>¥${knownPerPerson.toLocaleString()}</td>
+          <td>各不相同<button class="budget-toggle" type="button" aria-label="展開每人金額">▸</button></td>
           <td></td>
           <td></td>
         </tr>
+        ${renderShareBreakdownRow(footerShares, 5)}
       </tbody>
     </table>`
   );
   container.appendChild(wrapper);
+
+  wrapper.querySelectorAll(".budget-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const row = btn.closest("tr").nextElementSibling;
+      if (!row) return;
+      const willShow = row.hidden;
+      row.hidden = !willShow;
+      btn.textContent = willShow ? "▾" : "▸";
+    });
+  });
 }
 
 function checklistKey(group, item) {

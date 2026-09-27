@@ -466,6 +466,28 @@ body {
   border-bottom: none;
 }
 
+.budget-toggle {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.budget-breakdown-row td {
+  padding-top: 0;
+  border-bottom: 1px solid var(--line);
+  white-space: normal;
+}
+
+.budget-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 /* Packing & todos */
 
 .checklist-group {
