@@ -42,6 +42,7 @@ const days = [
     timeline: [
       { type: "note", text: "從東京出發前往新潟，交通方式尚未確定（新幹線／巴士，詳細再訂）。部分人可能提早到。" },
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
+      { type: "hop", text: "開車/計程車約9分鐘（2.6km，經国道7号）。步行約38分鐘（2.7km）較長，建議搭車" },
       {
         type: "activity",
         name: "新潟市旧齋藤家別邸",
@@ -49,6 +50,7 @@ const days = [
         cost: "門票¥300",
         map: { name: "新潟市旧齋藤家別邸", url: "https://maps.google.com/?q=新潟市旧齋藤家別邸" },
       },
+      { type: "hop", text: "步行約8分鐘（550m）" },
       {
         type: "activity",
         name: "砂丘館（旧日本銀行新潟支店長役宅）",
@@ -76,6 +78,7 @@ const days = [
     title: "燕三条職人工坊",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
+      { type: "hop", text: "開車約46分鐘（41.3km，經北陸自動車道）。無便利的大眾運輸選項" },
       {
         type: "activity",
         order: 1,
@@ -83,6 +86,7 @@ const days = [
         openHours: "10:00–18:00（無固定公休日，出發前查當月營業日曆）",
         map: { name: "ストックバスターズ 燕店", url: "https://maps.google.com/?q=ストックバスターズ 燕店" },
       },
+      { type: "hop", text: "開車約6分鐘（2.4km）" },
       {
         type: "activity",
         order: 2,
@@ -91,6 +95,7 @@ const days = [
         cost: "門票¥400",
         map: { name: "燕市産業史料館", url: "https://maps.google.com/?q=燕市産業史料館" },
       },
+      { type: "hop", text: "開車約5分鐘（2.1km，從燕市跨到三条市）" },
       {
         type: "activity",
         order: 3,
@@ -109,6 +114,7 @@ const days = [
     title: "逛沼垂一帶",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
+      { type: "hop", text: "步行約13分鐘（950m）" },
       {
         type: "activity",
         order: 1,
@@ -116,6 +122,7 @@ const days = [
         openHours: "10:00–17:00（無固定公休日，僅新年12/31–1/3休）",
         map: { name: "峰村醸造直売店", url: "https://maps.google.com/?q=峰村醸造直売店" },
       },
+      { type: "hop", text: "步行約7分鐘（450m，幾乎相鄰）" },
       {
         type: "activity",
         order: 2,
@@ -160,6 +167,7 @@ const days = [
         openHours: "9:00–18:00（年中無休，除元旦）",
         map: { name: "田中屋本店 みなと工房", url: "https://maps.google.com/?q=田中屋本店 みなと工房" },
       },
+      { type: "hop", text: "開車/計程車約7分鐘（2.6km）" },
       {
         type: "activity",
         order: 3,
@@ -167,6 +175,7 @@ const days = [
         openHours: "9:00–17:00，週四・每月第3週三休",
         map: { name: "本町鈴木鮮魚", url: "https://maps.google.com/?q=本町鈴木鮮魚" },
       },
+      { type: "hop", text: "開車/計程車約5分鐘（2.1km）" },
       {
         type: "activity",
         order: 4,
@@ -183,6 +192,7 @@ const days = [
           { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
         ],
       },
+      { type: "hop", text: "開車/計程車約6分鐘（1.9km）" },
       {
         type: "activity",
         order: 6,
@@ -211,6 +221,7 @@ const days = [
     title: "新潟取車 → 南魚沼・入住坂戸城",
     timeline: [
       { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
+      { type: "hop", text: "步行約3分鐘（250m）" },
       {
         type: "activity",
         order: 1,
@@ -262,8 +273,11 @@ const days = [
     title: "白山神社・白山公園（初詣）",
     timeline: [
       { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
+      { type: "hop", text: "步行約17分鐘（1.2km）" },
       { type: "activity", order: 1, name: "白山神社（初詣）", map: { name: "白山神社", url: "https://maps.google.com/?q=白山神社 新潟" } },
+      { type: "hop", text: "步行約1分鐘（94m，幾乎相鄰）" },
       { type: "activity", order: 2, name: "白山公園", map: { name: "白山公園", url: "https://maps.google.com/?q=白山公園 新潟" } },
+      { type: "hop", text: "步行約6分鐘（400m）" },
       {
         type: "activity",
         order: 3,
@@ -289,12 +303,14 @@ const days = [
         name: "第一只見川橋梁（会津桧原–会津西方間）",
         map: { name: "第一只見川橋梁", url: "https://maps.google.com/?q=第一只見川橋梁" },
       },
+      { type: "hop", text: "開車約4分鐘（2.2km，經国道252号・県道237号）" },
       {
         type: "activity",
         order: 2,
         name: "宮下アーチ三兄弟（会津宮下駅步行3分）",
         map: { name: "宮下アーチ三兄弟", url: "https://maps.google.com/?q=宮下アーチ三兄弟" },
       },
+      { type: "hop", text: "開車約2分鐘（1.4km，經国道400号）" },
       {
         type: "activity",
         order: 3,
