@@ -75,6 +75,7 @@ const days = [
     weekday: "六",
     title: "燕三条職人工坊",
     timeline: [
+      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
       {
         type: "activity",
         order: 1,
@@ -107,6 +108,7 @@ const days = [
     weekday: "日",
     title: "逛沼垂一帶",
     timeline: [
+      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
       {
         type: "activity",
         order: 1,
@@ -144,6 +146,7 @@ const days = [
     weekday: "一",
     title: "新潟市區觀光・與爸爸妹妹會合",
     timeline: [
+      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
       {
         type: "activity",
         order: 1,
@@ -239,6 +242,7 @@ const days = [
     weekday: "四",
     title: "彌彥山・彌彥神社",
     timeline: [
+      { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
       {
         type: "activity",
         order: 1,
@@ -256,6 +260,7 @@ const days = [
     weekday: "五",
     title: "白山神社・白山公園（初詣）",
     timeline: [
+      { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
       { type: "activity", order: 1, name: "白山神社（初詣）", map: { name: "白山神社", url: "https://maps.google.com/?q=白山神社 新潟" } },
       { type: "activity", order: 2, name: "白山公園", map: { name: "白山公園", url: "https://maps.google.com/?q=白山公園 新潟" } },
       {
@@ -307,6 +312,7 @@ const days = [
     weekday: "日",
     title: "飯盛山・会津さざえ堂",
     timeline: [
+      { type: "accommodation", name: "會津若松地區住宿（尚未選定，見day-9備註）" },
       {
         type: "activity",
         order: 1,
@@ -325,6 +331,7 @@ const days = [
     weekday: "一",
     title: "五色沼（雪鞋）",
     timeline: [
+      { type: "accommodation", name: "會津若松地區住宿（尚未選定，見day-9備註）" },
       { type: "activity", order: 1, name: "五色沼", map: { name: "五色沼", url: "https://maps.google.com/?q=五色沼" } },
       { type: "note", text: "冬季要雪鞋才能走完整段，視媽媽體力調整強度，體力吃緊可考慮開車路過拍照即可" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
@@ -336,7 +343,7 @@ const days = [
     weekday: "二",
     title: "會津若松 → 入住猪苗代 ヴィラ イナワシロ",
     timeline: [
-      { type: "note", text: "當日退房：會津若松地區飯店（尚未選定，見day-9備註）" },
+      { type: "accommodation", name: "會津若松地區住宿（今日退房，尚未選定，見day-9備註）" },
       {
         type: "activity",
         order: 1,
@@ -356,6 +363,7 @@ const days = [
     weekday: "三",
     title: "滑雪 Day 1",
     timeline: [
+      { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
     ],
@@ -366,6 +374,7 @@ const days = [
     weekday: "四",
     title: "滑雪 Day 2",
     timeline: [
+      { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
     ],
@@ -376,6 +385,7 @@ const days = [
     weekday: "五",
     title: "滑雪 Day 3",
     timeline: [
+      { type: "accommodation", id: "acc-inawashiro", name: "ヴィラ イナワシロ" },
       { type: "activity", order: 1, name: "滑雪" },
       { type: "note", text: "不滑雪的人可在猪苗代湖、磐梯猪苗代溫泉、野口英世記念館周邊悠閒" },
     ],
@@ -536,7 +546,7 @@ function isBackupOnlyActivity(item) {
 }
 
 function groupKey(item) {
-  if (item.type === "transport") return "steps";
+  if (item.type === "transport" || item.type === "accommodation") return "steps";
   if (item.type === "activity") return isBackupOnlyActivity(item) ? "note" : "steps";
   return item.type;
 }
@@ -605,10 +615,26 @@ function renderActivityStep(a) {
   `;
 }
 
+function renderAccommodationStep(a) {
+  const checkIn = a.checkIn ? `<span class="tag tag--cost">入住 ${a.checkIn}</span>` : "";
+  const checkOut = a.checkOut ? `<span class="tag tag--cost">退房 ${a.checkOut}</span>` : "";
+  const tagsRow = checkIn || checkOut ? `<div class="activity__meta">${checkIn}${checkOut}</div>` : "";
+  const nameHtml = a.id ? `<a href="#${a.id}">${a.name} →</a>` : a.name;
+  return `
+    <div class="activity__name">🏨 ${nameHtml}</div>
+    ${tagsRow}
+  `;
+}
+
 function renderStepsGroup(items) {
   const rows = items
     .map((item) => {
-      const inner = item.type === "transport" ? renderTransportStep(item) : renderActivityStep(item);
+      const inner =
+        item.type === "transport"
+          ? renderTransportStep(item)
+          : item.type === "accommodation"
+            ? renderAccommodationStep(item)
+            : renderActivityStep(item);
       return `<li class="activity">
         <div class="activity__order">${item._stepNumber}</div>
         <div>${inner}</div>
@@ -621,17 +647,6 @@ function renderStepsGroup(items) {
 function renderParkingGroup(items) {
   const rows = items.map((p) => `<div class="transport-row">${p.detail}</div>`).join("");
   return `<div class="day-block"><div class="day-block__heading">停車資訊</div>${rows}</div>`;
-}
-
-function renderAccommodationGroup(items) {
-  const rows = items
-    .map((a) => {
-      const checkIn = a.checkIn ? `<span class="time-tag">入住 ${a.checkIn}</span>` : "";
-      const checkOut = a.checkOut ? `<span class="time-tag">退房 ${a.checkOut}</span>` : "";
-      return `<div class="accommodation-inline">${checkIn}${checkOut}<a href="#${a.id}">${a.name} →</a></div>`;
-    })
-    .join("");
-  return `<div class="day-block"><div class="day-block__heading">住宿</div>${rows}</div>`;
 }
 
 function renderNoteGroup(items) {
@@ -648,7 +663,6 @@ function renderNoteGroup(items) {
 const GROUP_RENDERERS = {
   steps: renderStepsGroup,
   parking: renderParkingGroup,
-  accommodation: renderAccommodationGroup,
   note: renderNoteGroup,
 };
 
