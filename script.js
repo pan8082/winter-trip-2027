@@ -228,7 +228,7 @@ const days = [
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", checkOut: "09:00" },
       { type: "transport", summary: "南魚沼 → 新潟", duration: "約2–2.5小時" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（尚未訂房，詳見住宿清單）" },
+      { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）" },
       { type: "note", text: "此日移動量較大，行程宜精簡（尚未定案事項）" },
       ...niigataEveningBackup(),
     ],
@@ -274,7 +274,7 @@ const days = [
     weekday: "六",
     title: "只見線景觀 → 會津若松（移動日）",
     timeline: [
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
+      { type: "accommodation", id: "acc-niigata-suido", name: "Airbnb（水道町）", checkOut: null },
       { type: "note", text: "備案：離開新潟前，可在新潟駅ぽんしゅ館做最後採購（新潟地酒/伴手禮，之後就進福島縣了）" },
       { type: "transport", summary: "新潟 → 只見線沿線 → 會津若松" },
       {
@@ -415,6 +415,14 @@ const accommodations = [
     voucher: "有人工温泉大浴場「玄要の湯」，早餐吃到飽",
   },
   {
+    id: "acc-niigata-suido",
+    region: "新潟市中央区水道町",
+    name: "Airbnb（水道町）",
+    address: "新潟県新潟市中央区水道町2-808-6",
+    mapUrl: "https://maps.google.com/?q=新潟県新潟市中央区水道町2-808-6",
+    voucher: "Airbnb訂房，2026/12/30 入住 – 2027/01/02 退房（3晚），總額¥119,840。",
+  },
+  {
     id: "acc-rokkamachi",
     region: "六日町温泉（南魚沼）",
     name: "坂戸城",
@@ -468,7 +476,8 @@ const budget = {
     { name: "交通（其他：電車／計程車等）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
-    { name: "住宿（新潟／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
+    { name: "住宿（新潟第一段／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
