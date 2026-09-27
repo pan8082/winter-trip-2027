@@ -564,7 +564,13 @@ const packing = {
 const todos = [
   {
     name: "多",
-    items: ["訂新幹線 10:41 とき317（11/20開放訂票）", "訂剩下的住宿", "查買二手滑雪裝備的地方"],
+    items: [
+      "訂新幹線 10:41 とき317（11/20開放訂票）",
+      "查買二手滑雪裝備的地方",
+      '<a href="https://www.uonuma-no-sato.jp/cyozouko-kengaku/" target="_blank" rel="noopener">雪中貯蔵庫見学ツアー（11/30後可訂）</a>',
+      '<a href="https://www.inawashiro-ski.com/lift/rental/" target="_blank" rel="noopener">訂滑雪裝備</a>',
+      "討論回程交通方式跟訂票",
+    ],
   },
   {
     name: "實用連結",
