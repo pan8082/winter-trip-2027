@@ -318,7 +318,7 @@ const days = [
         map: { name: "第二只見川橋梁", url: "https://maps.google.com/?q=第二只見川橋梁" },
       },
       { type: "note", text: "三點車程都不遠，自駕串連" },
-      { type: "note", text: "當晚住宿地點：會津若松地區，目前尚未選定飯店（無候選資料）" },
+      { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
       { type: "note", text: "此日移動量較大，行程宜抓寬鬆（尚未定案事項）" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
     ],
@@ -329,7 +329,7 @@ const days = [
     weekday: "日",
     title: "飯盛山・会津さざえ堂",
     timeline: [
-      { type: "accommodation", name: "會津若松地區住宿（尚未選定，見day-9備註）" },
+      { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
       {
         type: "activity",
         order: 1,
@@ -348,7 +348,7 @@ const days = [
     weekday: "一",
     title: "五色沼（雪鞋）",
     timeline: [
-      { type: "accommodation", name: "會津若松地區住宿（尚未選定，見day-9備註）" },
+      { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY" },
       { type: "activity", order: 1, name: "五色沼", map: { name: "五色沼", url: "https://maps.google.com/?q=五色沼" } },
       { type: "note", text: "冬季要雪鞋才能走完整段，視媽媽體力調整強度，體力吃緊可考慮開車路過拍照即可" },
       FUKUSHIMA_HORSE_MEAT_NOTE,
@@ -360,7 +360,7 @@ const days = [
     weekday: "二",
     title: "會津若松 → 入住猪苗代 ヴィラ イナワシロ",
     timeline: [
-      { type: "accommodation", name: "會津若松地區住宿（今日退房，尚未選定，見day-9備註）" },
+      { type: "accommodation", id: "acc-aizu-tsurugajo", name: "会津鶴ヶ城STAY", checkOut: null },
       {
         type: "activity",
         order: 1,
@@ -461,6 +461,15 @@ const accommodations = [
       "訂房確認：旬彩の庄 坂戸城，2026/12/29 入住 – 12/30 退房，東館和室（禁煙），5名1晚，官網限定「南魚沼の和食会席」方案，2食付（大人¥19,320 × 5名），合計¥86,940（已折抵¥9,660）。信用卡付款。取消政策：前日起100%取消費，需自行注意退款相關手續費規定。備註：當日將自駕前往，已告知飯店需使用停車場。\n\n（予約番號見訂房確認信，此處不公開顯示）",
   },
   {
+    id: "acc-aizu-tsurugajo",
+    region: "會津若松",
+    name: "会津鶴ヶ城STAY",
+    address: "〒965-0872 福島県会津若松市東栄町8-12",
+    mapUrl: "https://maps.google.com/?q=会津鶴ヶ城STAY 会津若松",
+    phone: "050-3645-1885",
+    voucher: "会津鶴ヶ城STAY by 会津七日町INN，一棟貸し（2026年開業），2027/01/02 入住 – 01/05 退房（3晚）。步行約2分即達鶴ヶ城，離飯盛山約3.3km。價格/訂房明細待補。",
+  },
+  {
     id: "acc-inawashiro",
     region: "猪苗代",
     name: "ヴィラ イナワシロ",
@@ -504,7 +513,8 @@ const budget = {
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
-    { name: "住宿（新潟第一段／會津若松，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿（新潟第一段，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿・會津若松 会津鶴ヶ城STAY", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
