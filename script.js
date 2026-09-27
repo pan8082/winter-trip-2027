@@ -48,8 +48,8 @@ const days = [
         boarding: "東京駅22番線 10:41發",
         alighting: "新潟駅11番線 12:32著",
       },
-      { type: "hop", text: "步行約5分鐘內（駅前住宿，暫定，依實際訂房地點調整）" },
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿（3候選尚未訂房，詳見住宿清單）" },
+      { type: "hop", text: "步行約5分鐘內（駅前住宿）" },
+      { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前" },
       { type: "hop", text: "開車/計程車約9分鐘（2.6km，經国道7号）。步行約38分鐘（2.7km）較長，建議搭車" },
       {
         type: "activity",
@@ -85,7 +85,7 @@ const days = [
     weekday: "六",
     title: "燕三条職人工坊",
     timeline: [
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
+      { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前" },
       {
         type: "transport",
         summary: "新潟 → 燕三条（新幹線＋計程車）",
@@ -134,7 +134,7 @@ const days = [
     weekday: "日",
     title: "逛沼垂一帶",
     timeline: [
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
+      { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前" },
       { type: "hop", text: "步行約13分鐘（950m）" },
       {
         type: "activity",
@@ -174,7 +174,7 @@ const days = [
     weekday: "一",
     title: "新潟市區觀光・與爸爸妹妹會合",
     timeline: [
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿" },
+      { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前", checkOut: "3晚已住完" },
       {
         type: "activity",
         order: 1,
@@ -215,6 +215,7 @@ const days = [
         note: "機場地酒水龍頭，搭巴士到車站",
         cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
       },
+      { type: "accommodation", id: "acc-niigata-2", name: "Hotel Global View 新潟", note: "5人3間房，入住放行李" },
       {
         type: "activity",
         order: 6,
@@ -240,7 +241,7 @@ const days = [
     weekday: "二",
     title: "新潟取車 → 南魚沼・入住坂戸城",
     timeline: [
-      { type: "accommodation", id: "acc-niigata-1", name: "新潟駅前住宿", checkOut: null },
+      { type: "accommodation", id: "acc-niigata-2", name: "Hotel Global View 新潟", checkOut: null },
       { type: "hop", text: "步行約3分鐘（250m）" },
       {
         type: "activity",
@@ -463,24 +464,17 @@ const days = [
 const accommodations = [
   {
     id: "acc-niigata-1",
-    region: "新潟駅前（3候選，尚未訂房）",
-    name: "ホテルメッツ新潟",
-    mapUrl: "https://maps.google.com/?q=ホテルメッツ新潟",
-    voucher: "JR新潟駅萬代口直結，最低參考價1晚4,988円/房（跨年夜實際會更高，非即時報價）",
+    region: "新潟駅前",
+    name: "Comfort Hotel 新潟駅前",
+    mapUrl: "https://maps.google.com/?q=Comfort Hotel 新潟駅前",
+    voucher: "2026/12/25 入住 – 12/28 退房（3晚，2間房），總額¥25,927＋¥27,505（多、媽媽、阿姨3人住，由多先付款）。訂房明細於Agoda App內查看，此處不公開顯示。",
   },
   {
-    id: "acc-niigata-1-alt2",
-    region: "新潟駅前（3候選，尚未訂房）",
-    name: "新潟駅前ホテル",
-    mapUrl: "https://maps.google.com/?q=新潟駅前ホテル",
-    voucher: "2025/4整修，南口徒步1分，內有天然溫泉大浴場",
-  },
-  {
-    id: "acc-niigata-1-alt3",
-    region: "新潟駅前（3候選，尚未訂房）",
-    name: "アパホテル〈新潟古町〉",
-    mapUrl: "https://maps.google.com/?q=アパホテル 新潟古町",
-    voucher: "有人工温泉大浴場「玄要の湯」，早餐吃到飽",
+    id: "acc-niigata-2",
+    region: "新潟駅前",
+    name: "Hotel Global View 新潟",
+    mapUrl: "https://maps.google.com/?q=Hotel Global View 新潟",
+    voucher: "2026/12/28 入住 – 12/29 退房（1晚，3間房），總額¥10,379×2＋¥6,571（五人住，由多先付款）。訂房明細於Agoda App內查看，此處不公開顯示。",
   },
   {
     id: "acc-niigata-suido",
