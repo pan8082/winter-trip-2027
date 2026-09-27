@@ -260,7 +260,7 @@ const days = [
     weekday: "三",
     title: "南魚沼 → 新潟（移動日）",
     timeline: [
-      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", note: "吃早餐", checkOut: "09:00" },
+      { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", note: "吃早餐", checkOut: "11:00" },
       { type: "hop", text: "開車約12分鐘（9.1km，經国道291号）" },
       { type: "activity", order: 1, name: "魚沼之里", map: { name: "魚沼之里", url: "https://maps.google.com/?q=魚沼之里" } },
       { type: "hop", text: "開車約2–2.5小時（南魚沼 → 新潟）" },
@@ -548,7 +548,8 @@ const budget = {
     { name: "住宿・坂戸城", total: 86940, perPerson: 19320, perPersonNote: "拔麻的是多贊助", paid: "prepaid", paidBy: "多" },
     { name: "住宿・猪苗代 ヴィラ イナワシロ", total: 267000, perPerson: 53400, paid: "prepaid", paidBy: "多" },
     { name: "住宿・新潟 Airbnb（水道町）", total: 119840, perPerson: 23968, paid: "prepaid", paidBy: "多" },
-    { name: "住宿（新潟第一段，尚未訂房）", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "住宿・新潟 Comfort Hotel 新潟駅前", total: 53432, perPerson: 17811, paid: "prepaid", paidBy: "多" },
+    { name: "住宿・新潟 Hotel Global View", total: 27329, perPerson: 5466, paid: "prepaid", paidBy: "多" },
     { name: "住宿・會津若松 会津鶴ヶ城STAY", total: 88567, perPerson: 17713, paid: "prepaid", paidBy: "多" },
     { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
