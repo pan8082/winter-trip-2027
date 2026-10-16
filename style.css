@@ -165,7 +165,6 @@ body {
   background: var(--card);
   border-radius: 16px;
   padding: 1.5rem;
-  border: 1px solid var(--line);
   scroll-margin-top: 4rem;
 }
 
@@ -182,7 +181,7 @@ body {
 }
 
 .day-card__date {
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 .day-card__title {
@@ -190,7 +189,7 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   color: var(--navy);
-  margin: 0.35rem 0 1rem;
+  margin: 0.6rem 0 1rem;
 }
 
 .day-block {
@@ -225,7 +224,7 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1.25rem;
 }
 
 .activity {
@@ -240,7 +239,7 @@ body {
   position: absolute;
   left: 0.8125rem;
   top: 1.75rem;
-  bottom: -0.6rem;
+  bottom: -1.25rem;
   width: 2px;
   background: var(--line);
   z-index: 0;
@@ -282,6 +281,7 @@ body {
 
 .activity__name {
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .activity__name a {
@@ -292,7 +292,8 @@ body {
 .activity__meta {
   font-size: 0.82rem;
   color: var(--muted);
-  margin-top: 0.1rem;
+  line-height: 1.55;
+  margin-top: 0.2rem;
 }
 
 .tag {
@@ -359,23 +360,10 @@ body {
 
 /* Accommodation section */
 
-.accommodation-region {
-  font-weight: 800;
-  color: var(--muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  margin: 1.5rem 0 0.5rem;
-}
-
-.accommodation-region:first-child {
-  margin-top: 0;
-}
-
 .accommodation-card {
   background: var(--card);
   border-radius: 16px;
   padding: 1.25rem 1.5rem;
-  border: 1px solid var(--line);
   scroll-margin-top: 4rem;
 }
 
@@ -400,8 +388,9 @@ body {
 
 .accommodation-card__link {
   display: inline-block;
-  color: var(--accent);
-  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -421,7 +410,6 @@ body {
   background: var(--card);
   border-radius: 16px;
   padding: 1.1rem 1.5rem;
-  border: 1px solid var(--line);
 }
 
 .transport-card__day {
@@ -436,7 +424,6 @@ body {
 .budget-table-wrap {
   background: var(--card);
   border-radius: 16px;
-  border: 1px solid var(--line);
   overflow: hidden;
   overflow-x: auto;
 }
@@ -513,7 +500,6 @@ body {
   background: var(--card);
   border-radius: 16px;
   padding: 1.25rem 1.5rem;
-  border: 1px solid var(--line);
 }
 
 .checklist-group__title {

@@ -483,21 +483,18 @@ const days = [
 const accommodations = [
   {
     id: "acc-niigata-1",
-    region: "新潟駅前",
     name: "Comfort Hotel 新潟駅前",
     mapUrl: "https://maps.google.com/?q=Comfort Hotel 新潟駅前",
     voucher: "2026/12/25 入住 – 12/28 退房（3晚，2間房），總額¥25,927＋¥27,505（多、媽媽、阿姨3人住，由多先付款）。訂房明細於Agoda App內查看，此處不公開顯示。",
   },
   {
     id: "acc-niigata-2",
-    region: "新潟駅前",
     name: "Hotel Global View 新潟",
     mapUrl: "https://maps.google.com/?q=Hotel Global View 新潟",
     voucher: "2026/12/28 入住 – 12/29 退房（1晚，3間房），總額¥10,379×2＋¥6,571（五人住，由多先付款）。訂房明細於Agoda App內查看，此處不公開顯示。",
   },
   {
     id: "acc-niigata-suido",
-    region: "新潟市中央区水道町",
     name: "Airbnb（水道町）",
     address: "新潟県新潟市中央区水道町2-808-6",
     mapUrl: "https://maps.google.com/?q=新潟県新潟市中央区水道町2-808-6",
@@ -505,7 +502,6 @@ const accommodations = [
   },
   {
     id: "acc-rokkamachi",
-    region: "六日町温泉（南魚沼）",
     name: "坂戸城",
     address: "〒949-6611 新潟県南魚沼市阪戸292-4",
     mapUrl: "https://maps.google.com/?q=坂戸城 南魚沼",
@@ -516,7 +512,6 @@ const accommodations = [
   },
   {
     id: "acc-aizu-tsurugajo",
-    region: "會津若松",
     name: "会津鶴ヶ城STAY",
     address: "〒965-0872 福島県会津若松市東栄町8-12",
     mapUrl: "https://maps.google.com/?q=会津鶴ヶ城STAY 会津若松",
@@ -525,7 +520,6 @@ const accommodations = [
   },
   {
     id: "acc-inawashiro",
-    region: "猪苗代",
     name: "ヴィラ イナワシロ",
     address: "〒969-3102 福島県耶麻郡猪苗代町字葉山7105",
     mapUrl: "https://maps.google.com/?q=ヴィラ イナワシロ 猪苗代",
@@ -680,7 +674,7 @@ function groupConsecutive(timeline) {
 function renderMapPins(map, backups) {
   if (!map && !(backups && backups.length)) return "";
   const pin = (p, isBackup) =>
-    `<li class="map-pin${isBackup ? " map-pin--backup" : ""}"><a href="${p.url}" target="_blank" rel="noopener">📍 ${p.name}</a>${
+    `<li class="map-pin${isBackup ? " map-pin--backup" : ""}"><a href="${p.url}" target="_blank" rel="noopener">📍 ${isBackup ? p.name : "Google Map"}</a>${
       isBackup ? '<span class="map-pin__badge">備選</span>' : ""
     }</li>`;
   const items = [map ? pin(map, false) : "", ...(backups || []).map((b) => pin(b, true))].join("");
@@ -823,12 +817,7 @@ function renderItinerary() {
 
 function renderAccommodationSection() {
   const container = document.getElementById("accommodation-list");
-  let lastRegion = null;
   accommodations.forEach((acc) => {
-    if (acc.region !== lastRegion) {
-      container.appendChild(el("div", "accommodation-region", acc.region));
-      lastRegion = acc.region;
-    }
     const card = el(
       "article",
       "accommodation-card",
@@ -836,7 +825,7 @@ function renderAccommodationSection() {
       <div class="accommodation-card__name">${acc.name}</div>
       ${acc.address ? `<div class="accommodation-card__address">${acc.address}</div>` : ""}
       <div class="accommodation-card__links">
-        ${acc.mapUrl ? `<a class="accommodation-card__link" href="${acc.mapUrl}" target="_blank" rel="noopener">在 Google Maps 開啟 →</a>` : ""}
+        ${acc.mapUrl ? `<a class="accommodation-card__link" href="${acc.mapUrl}" target="_blank" rel="noopener">📍 Google Map</a>` : ""}
         ${acc.websiteUrl ? `<a class="accommodation-card__link" href="${acc.websiteUrl}" target="_blank" rel="noopener">官方網站 →</a>` : ""}
       </div>
       ${acc.phone ? `<div class="accommodation-card__address">電話：${acc.phone}</div>` : ""}
