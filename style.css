@@ -181,6 +181,10 @@ body {
   color: var(--muted);
 }
 
+.day-card__date {
+  letter-spacing: 0.03em;
+}
+
 .day-card__title {
   font-family: "Cactus Classical Serif", serif;
   font-size: 1.6rem;
