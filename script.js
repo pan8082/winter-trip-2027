@@ -277,7 +277,7 @@ const days = [
     id: "day-6",
     date: "2026-12-30",
     weekday: "三",
-    title: "南魚沼 → 新潟（移動日）",
+    title: "南魚沼・魚沼之里",
     timeline: [
       { type: "accommodation", id: "acc-rokkamachi", name: "坂戸城", note: "吃早餐", checkOut: "11:00" },
       { type: "hop", text: "開車約12分鐘（9.1km，經国道291号）" },
@@ -615,6 +615,7 @@ const todos = [
       '<a href="https://www.uonuma-no-sato.jp/cyozouko-kengaku/" target="_blank" rel="noopener">雪中貯蔵庫見学ツアー（11/30後可訂）</a>',
       '<a href="https://www.inawashiro-ski.com/lift/rental/" target="_blank" rel="noopener">訂滑雪裝備</a>',
       "討論回程交通方式跟訂票",
+      "訂位餐廳",
     ],
   },
   {
