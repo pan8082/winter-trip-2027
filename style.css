@@ -331,6 +331,11 @@ body {
   color: var(--warn);
 }
 
+.tag--estimate {
+  background: #fdf0e2;
+  color: var(--warn);
+}
+
 .tag--cost {
   background: var(--card-muted);
   color: var(--navy);

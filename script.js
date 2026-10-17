@@ -562,7 +562,61 @@ const budget = {
       paid: "onsite",
       paidBy: null,
     },
-    { name: "交通（其他：電車／計程車等）", total: null, perPerson: null, paid: null, paidBy: null },
+    {
+      name: "交通・新潟↔燕三条新幹線（12/26）",
+      total: 10140,
+      perPerson: 3380,
+      perPersonNote: "往返 ¥1,690×2（IC卡價）",
+      people: ["多", "媽媽", "阿姨"],
+      paid: null,
+      paidBy: null,
+    },
+    {
+      name: "交通・機場巴士 新潟空港→新潟駅（12/28）",
+      total: 940,
+      perPerson: 470,
+      people: ["爸爸", "妹妹"],
+      paid: null,
+      paidBy: null,
+    },
+    { name: "交通・租車油費", estimate: true, total: 12500, perPerson: 2500, perPersonNote: "全程約600km", paid: null, paidBy: null },
+    {
+      name: "交通・高速公路費",
+      estimate: true,
+      total: 10000,
+      perPerson: 2000,
+      perPersonNote: "新潟↔南魚沼來回、新潟→會津若松",
+      paid: null,
+      paidBy: null,
+    },
+    {
+      name: "交通・計程車 會津若松→猪苗代（1/5）",
+      estimate: true,
+      total: 7500,
+      perPerson: 1500,
+      perPersonNote: "若需2台車，費用加倍",
+      paid: null,
+      paidBy: null,
+    },
+    {
+      name: "交通・市區計程車（12/26燕三条、12/28新潟）",
+      estimate: true,
+      total: 5000,
+      perPerson: 1667,
+      people: ["多", "媽媽", "阿姨"],
+      paid: null,
+      paidBy: null,
+    },
+    {
+      name: "交通・回程 猪苗代→成田（1/9）",
+      estimate: true,
+      total: 45988,
+      perPerson: 11497,
+      perPersonNote: "計程車＋JR＋新幹線＋Skyliner",
+      people: ["多", "媽媽", "阿姨", "爸爸"],
+      paid: null,
+      paidBy: null,
+    },
     {
       name: "住宿・坂戸城",
       total: 86940,
@@ -585,7 +639,26 @@ const budget = {
     },
     { name: "住宿・新潟 Hotel Global View", total: 27329, perPerson: 5466, paid: "prepaid", paidBy: "多" },
     { name: "住宿・會津若松 会津鶴ヶ城STAY", total: 88567, perPerson: 17713, paid: "prepaid", paidBy: "多" },
-    { name: "活動", total: null, perPerson: null, paid: null, paidBy: null },
+    { name: "活動・雪中貯蔵庫見學ツアー", total: 2500, perPerson: 500, paid: null, paidBy: null },
+    {
+      name: "活動・滑雪三日券",
+      estimate: true,
+      total: 51000,
+      perPerson: 17000,
+      people: ["多", "爸爸", "妹妹"],
+      paid: null,
+      paidBy: null,
+    },
+    {
+      name: "活動・滑雪租借（3日）",
+      estimate: true,
+      total: 36900,
+      perPersonLabel: "妹妹 ¥24,600／多 ¥12,300",
+      perPersonNote: "妹妹含爸爸的一套（生日禮物）",
+      shares: { 妹妹: 24600, 多: 12300 },
+      paid: null,
+      paidBy: null,
+    },
     { name: "餐飲", total: null, perPerson: null, paid: null, paidBy: null },
   ],
 };
@@ -903,6 +976,7 @@ const ALL_TRAVELERS = ["多", "媽媽", "阿姨", "爸爸", "妹妹"];
 
 function personShares(item) {
   if (typeof item.total !== "number") return null;
+  if (item.shares) return ALL_TRAVELERS.map((name) => ({ name, amount: item.shares[name] ?? null }));
   const people = item.people || ALL_TRAVELERS;
   const baseShare = item.total / people.length;
   const covers = (item.sponsorship && item.sponsorship.covers) || [];
@@ -933,7 +1007,7 @@ function renderBudgetSection() {
   const rows = budget.items
     .map((item) => {
       const total = formatMoney(item.total);
-      const perPerson = formatMoney(item.perPerson);
+      const perPerson = item.perPersonLabel || formatMoney(item.perPerson);
       const perPersonNote = item.perPersonNote ? `<div class="budget-table__note">${item.perPersonNote}</div>` : "";
       const paidLabel = paidLabels[item.paid] || "待定";
       const paidByLabel = item.paid === "prepaid" && item.paidBy ? item.paidBy : "—";
@@ -941,7 +1015,7 @@ function renderBudgetSection() {
       const toggle = shares ? `<button class="budget-toggle" type="button" aria-label="展開每人金額">▸</button>` : "";
       return (
         `<tr>
-        <td>${item.name}</td>
+        <td>${item.name}${item.estimate ? ' <span class="tag tag--estimate">預估</span>' : ""}</td>
         <td class="${total ? "" : "cell--missing"}">${total || "待補"}</td>
         <td class="${perPerson ? "" : "cell--missing"}">${perPerson || "待補"}${perPersonNote}${toggle}</td>
         <td>${paidLabel}</td>
@@ -951,18 +1025,27 @@ function renderBudgetSection() {
     })
     .join("");
 
-  const knownTotal = budget.items.reduce((sum, i) => sum + (typeof i.total === "number" ? i.total : 0), 0);
-  const totalsByPerson = {};
-  ALL_TRAVELERS.forEach((name) => (totalsByPerson[name] = 0));
-  budget.items.forEach((item) => {
-    const shares = personShares(item);
-    if (!shares) return;
-    shares.forEach((s) => {
-      if (s.amount != null) totalsByPerson[s.name] += s.amount;
+  const sumFor = (items) => {
+    const byPerson = Object.fromEntries(ALL_TRAVELERS.map((name) => [name, 0]));
+    let total = 0;
+    items.forEach((item) => {
+      if (typeof item.total === "number") total += item.total;
+      const shares = personShares(item);
+      if (shares) shares.forEach((s) => s.amount != null && (byPerson[s.name] += s.amount));
     });
-  });
-  const footerShares = ALL_TRAVELERS.map((name) => ({ name, amount: totalsByPerson[name] }));
+    return { total, shares: ALL_TRAVELERS.map((name) => ({ name, amount: byPerson[name] })) };
+  };
+  const known = sumFor(budget.items.filter((i) => !i.estimate));
+  const withEstimate = sumFor(budget.items);
   const hasMissing = budget.items.some((i) => typeof i.total !== "number");
+  const totalRow = (label, sum) => `<tr class="budget-table__total">
+          <td>${label}</td>
+          <td>¥${Math.round(sum.total).toLocaleString()}</td>
+          <td>各不相同<button class="budget-toggle" type="button" aria-label="展開每人金額">▸</button></td>
+          <td></td>
+          <td></td>
+        </tr>
+        ${renderShareBreakdownRow(sum.shares, 5)}`;
 
   const wrapper = el(
     "div",
@@ -973,14 +1056,8 @@ function renderBudgetSection() {
       </thead>
       <tbody>
         ${rows}
-        <tr class="budget-table__total">
-          <td>合計${hasMissing ? "（不含待補）" : ""}</td>
-          <td>¥${knownTotal.toLocaleString()}</td>
-          <td>各不相同<button class="budget-toggle" type="button" aria-label="展開每人金額">▸</button></td>
-          <td></td>
-          <td></td>
-        </tr>
-        ${renderShareBreakdownRow(footerShares, 5)}
+        ${totalRow(`合計・已知金額${hasMissing ? "（不含待補）" : ""}`, known)}
+        ${totalRow(`合計・含預估${hasMissing ? "（不含待補）" : ""}`, withEstimate)}
       </tbody>
     </table>`
   );
