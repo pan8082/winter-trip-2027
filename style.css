@@ -454,6 +454,40 @@ body {
 
 /* Transport overview */
 
+.info-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.info-table td {
+  padding: 0.35rem 0.9rem 0.35rem 0;
+  vertical-align: top;
+}
+
+.info-table tr + tr td {
+  border-top: 1px solid var(--line);
+}
+
+.info-table__date,
+.info-table__who {
+  white-space: nowrap;
+}
+
+.info-table__date {
+  color: var(--muted);
+}
+
+.info-table__who {
+  font-weight: 700;
+}
+
+.info-table__sub {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 0.1rem;
+  word-break: keep-all;
+}
+
 .transport-card__day {
   font-size: 0.75rem;
   font-weight: 800;

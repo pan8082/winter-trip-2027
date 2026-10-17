@@ -220,7 +220,7 @@ const days = [
         order: 5,
         name: "爸爸、妹妹抵達新潟，會合",
         note: "機場地酒水龍頭，搭巴士到車站",
-        cost: "虎航 IT228・桃園約13:45–13:55起飛・18:00抵達新潟",
+        cost: "虎航 IT228・桃園13:45起飛・18:00抵達新潟",
       },
       { type: "accommodation", id: "acc-niigata-2", name: "Hotel Global View 新潟", note: "5人3間房，入住放行李" },
       {
@@ -510,6 +510,17 @@ const accommodations = [
 
 // 交通總覽 — 租車/巴士/新幹線等已預訂的交通服務明細（非每日移動時間，那部分在行程本身呈現）
 const transportServices = [
+  {
+    id: "flights",
+    name: "大家的航班",
+    category: "機票",
+    table: [
+      { date: "12/16", who: "媽媽", flight: "長榮 BR184", time: "TPE 07:55 → NRT 12:25" },
+      { date: "12/16", who: "阿姨", flight: "星宇 JX802", time: "TPE 10:10 → NRT 14:20" },
+      { date: "12/21", who: "多", flight: "長榮 BR198", time: "TPE 09:00 → NRT 13:25" },
+      { date: "12/28", who: "爸爸、妹妹", flight: "虎航 IT228", time: "TPE 13:45 → KIJ 18:00" },
+    ],
+  },
   {
     id: "rental-car",
     name: "ニッポンレンタカー",
@@ -851,6 +862,18 @@ function renderAccommodationSection() {
   });
 }
 
+function renderInfoTable(rows) {
+  const body = rows
+    .map(
+      (r) =>
+        `<tr><td class="info-table__date">${r.date}</td><td class="info-table__who">${r.who}</td><td>${r.flight}${
+          r.time ? `<div class="info-table__sub">${r.time}</div>` : ""
+        }</td></tr>`
+    )
+    .join("");
+  return `<table class="info-table"><tbody>${body}</tbody></table>`;
+}
+
 function renderTransportSection() {
   const container = document.getElementById("transport-list");
   transportServices.forEach((service) => {
@@ -865,6 +888,7 @@ function renderTransportSection() {
         <div class="accommodation-card__name">${service.category}・${service.name}</div>
         ${links ? `<div class="accommodation-card__links">${links}</div>` : ""}
         ${service.detail ? `<div class="accommodation-card__voucher">${service.detail}</div>` : ""}
+        ${service.table ? `<div class="accommodation-card__voucher">${renderInfoTable(service.table)}</div>` : ""}
       `
       )
     );
