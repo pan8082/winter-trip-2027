@@ -32,11 +32,11 @@ const days = [
     timeline: [
       {
         type: "transport",
-        summary: "東京 → 新潟（新幹線とき317號）",
-        duration: "1小時51分（333.9km，直達無需轉乘）",
-        cost: "¥10,450／人（自由席，IC卡價）",
-        boarding: "東京駅22番線 10:41發",
-        alighting: "新潟駅11番線 12:32著",
+        summary: "東京 → 新潟（新幹線とき313號）",
+        duration: "2小時1分（333.9km，直達無需轉乘）",
+        cost: "¥10,980／人（多、媽媽、阿姨）",
+        boarding: "東京駅23番線 09:28發",
+        alighting: "新潟駅13番線 11:29著",
       },
       { type: "hop", text: "步行約5分鐘內（駅前住宿）" },
       { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前" },
@@ -97,11 +97,12 @@ const days = [
       { type: "accommodation", id: "acc-niigata-1", name: "Comfort Hotel 新潟駅前" },
       {
         type: "transport",
-        summary: "新潟 → 燕三条（新幹線＋計程車）",
-        duration: "新幹線約11分鐘（40.1km）＋計程車約5分鐘（2.6km）",
-        cost: "新幹線¥1,690／人（IC卡價）",
+        summary: "新潟 → 燕三条（新幹線）",
+        duration: "約11分鐘（40.1km）",
+        cost: "¥1,690／人（IC卡價）",
         schedules: ["とき316號 10:28新潟發→10:39燕三条著", "とき318號 11:25新潟發→11:36燕三条著"],
       },
+      { type: "hop", text: "燕三条駅搭計程車約5分鐘（2.6km，至燕市産業史料館）" },
       {
         type: "activity",
         order: 1,
@@ -527,7 +528,7 @@ const transportServices = [
 const budget = {
   items: [
     {
-      name: "交通・新幹線（東京→新潟，とき317）",
+      name: "交通・新幹線（東京→新潟，とき313）",
       total: 32940,
       perPerson: 10980,
       people: ["多", "媽媽", "阿姨"],
@@ -621,7 +622,7 @@ const todos = [
   {
     name: "多",
     items: [
-      "訂新幹線 10:41 とき317（11/20開放訂票）",
+      "訂新幹線 09:28 とき313（11/20開放訂票）",
       "查買二手滑雪裝備的地方",
       '<a href="https://www.uonuma-no-sato.jp/cyozouko-kengaku/" target="_blank" rel="noopener">雪中貯蔵庫見学ツアー（11/30後可訂）</a>',
       '<a href="https://www.inawashiro-ski.com/lift/rental/" target="_blank" rel="noopener">訂滑雪裝備</a>',
@@ -634,6 +635,7 @@ const todos = [
     items: [
       '<a href="https://www.city.niigata.lg.jp/kanko/kanko/kankobus/pamphletdownload.files/20260901_ja_map.pdf" target="_blank" rel="noopener">新潟觀光巴士地圖</a>',
       '<a href="https://www.saketime.jp/ranking/niigata/" target="_blank" rel="noopener">新潟日本酒排行榜</a>',
+      '<a href="https://www.city.niigata.lg.jp/kanko/kanko/kankobus/pamphletdownload.files/20260331_ja_timetable.pdf" target="_blank" rel="noopener">新潟觀光巴士時刻表（含冬期班次）</a>',
     ],
   },
 ];
