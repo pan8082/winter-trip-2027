@@ -517,7 +517,7 @@ const transportServices = [
     table: [
       { date: "12/16", who: "媽媽", flight: "長榮 BR184", time: "TPE 07:55 → NRT 12:25" },
       { date: "12/16", who: "阿姨", flight: "星宇 JX802", time: "TPE 10:10 → NRT 14:20" },
-      { date: "12/21", who: "多", flight: "長榮 BR198", time: "TPE 09:00 → NRT 13:25" },
+      { date: "12/21", who: "多", flight: "長榮 BR198", time: "TPE 08:50 → NRT 12:55" },
       { date: "12/28", who: "爸爸、妹妹", flight: "虎航 IT228", time: "TPE 13:45 → KIJ 18:00" },
     ],
   },
