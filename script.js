@@ -220,7 +220,7 @@ const days = [
         order: 5,
         name: "爸爸、妹妹抵達新潟，會合",
         note: "機場地酒水龍頭，搭巴士到車站",
-        cost: "虎航 IT228・桃園13:45起飛・18:00抵達新潟",
+        cost: "虎航 IT228・桃園13:55起飛・18:00抵達新潟",
       },
       { type: "accommodation", id: "acc-niigata-2", name: "Hotel Global View 新潟", note: "5人3間房，入住放行李" },
       {
@@ -515,10 +515,10 @@ const transportServices = [
     name: "大家的航班",
     category: "機票",
     table: [
-      { date: "12/16", who: "媽媽", flight: "長榮 BR184", time: "TPE 07:55 → NRT 12:25" },
+      { date: "12/16", who: "媽媽", flight: "長榮 BR184", time: "TPE 07:55 → NRT 12:00" },
       { date: "12/16", who: "阿姨", flight: "星宇 JX802", time: "TPE 10:10 → NRT 14:20" },
       { date: "12/21", who: "多", flight: "長榮 BR198", time: "TPE 08:50 → NRT 12:55" },
-      { date: "12/28", who: "爸爸、妹妹", flight: "虎航 IT228", time: "TPE 13:45 → KIJ 18:00" },
+      { date: "12/28", who: "爸爸、妹妹", flight: "虎航 IT228", time: "TPE 13:55 → KIJ 18:00" },
     ],
   },
   {
