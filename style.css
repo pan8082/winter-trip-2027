@@ -96,6 +96,7 @@ body {
 
 #nav-sentinel {
   height: 1px;
+  margin-top: -3.75rem;
 }
 
 .jump-nav {
@@ -107,11 +108,12 @@ body {
   gap: 0.5rem;
   overflow-x: auto;
   padding: 0.75rem 1rem;
-  background: var(--card-muted);
+  background: transparent;
   scrollbar-width: none;
 }
 
 .jump-nav.is-stuck {
+  background: var(--card-muted);
   box-shadow: 0 4px 16px rgba(11, 27, 51, 0.12);
 }
 
@@ -375,6 +377,36 @@ body {
 
 .day-block__notes:last-child {
   margin-bottom: 0;
+}
+
+.day-block__fold summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.day-block__fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.day-block__fold summary::after {
+  content: "▸";
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--accent);
+  transition: transform 0.15s ease;
+}
+
+.day-block__fold[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.day-block__count {
+  font-size: 0.72rem;
+  color: var(--backup);
+  font-weight: 700;
 }
 
 /* Accommodation section */

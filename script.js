@@ -10,27 +10,17 @@ const trip = {
 
 const FUKUSHIMA_HORSE_MEAT_NOTE = { type: "note", text: "新潟朋友推薦：福島生馬肉也很有名" };
 
+const NIIGATA_SIGHTSEEING_BACKUPS = [
+  { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
+  { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
+  { name: "ぽんしゅ館 新潟驛店・唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
+  { name: "ぽんしゅ館 新潟驛店・ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
+  { name: "寺泊魚市場（海景＋海鮮，行程有空檔時可排入）", url: "https://maps.google.com/?q=寺泊魚市場" },
+];
+
 // 新潟市區晚間彈性備案 — 套用在每一個「當晚住宿在新潟」的日子（除了day-3沼垂、day-4市區會合，那兩天已經是市區觀光正式行程）
 function niigataEveningBackup() {
-  return [
-    {
-      type: "activity",
-      name: "新潟市區觀光（備案，景點待排）",
-      backups: [
-        { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
-        { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
-      ],
-    },
-    {
-      type: "activity",
-      name: "ぽんしゅ館 新潟驛店",
-      backups: [
-        { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
-        { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
-      ],
-    },
-    { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
-  ];
+  return [{ type: "activity", name: "新潟市區觀光", backups: NIIGATA_SIGHTSEEING_BACKUPS }];
 }
 
 const days = [
@@ -87,7 +77,7 @@ const days = [
       },
       {
         type: "activity",
-        name: "新潟駅周邊晚餐（選項，待抵達時間確定再挑）",
+        name: "新潟駅周邊晚餐",
         backups: [
           { name: "串吉（焼き鳥，17:30–23:00，週日/假日休）", url: "https://maps.google.com/?q=串吉 新潟駅" },
           { name: "長岡小嶋屋 新潟駅前店（へぎそば，無公休日）", url: "https://maps.google.com/?q=長岡小嶋屋 新潟駅前店" },
@@ -172,7 +162,7 @@ const days = [
       {
         type: "activity",
         order: 3,
-        name: "午餐（選項）",
+        name: "午餐",
         backups: [
           { name: "せかい鮨（11:00–14:00 / 17:00–20:00，週一二休）", url: "https://maps.google.com/?q=せかい鮨 新潟" },
           { name: "栄華楼（11:00–14:30 / 17:30–21:00，週二三休）", url: "https://maps.google.com/?q=栄華楼 沼垂" },
@@ -220,11 +210,8 @@ const days = [
       {
         type: "activity",
         order: 4,
-        name: "新潟市區觀光（景點待排）",
-        backups: [
-          { name: "萬代橋（散步看橋景）", url: "https://maps.google.com/?q=萬代橋" },
-          { name: "朱鷺メッセ展望室（免費，電梯直達，360度view，最省力）", url: "https://maps.google.com/?q=朱鷺メッセ展望室" },
-        ],
+        name: "新潟市區觀光",
+        backups: NIIGATA_SIGHTSEEING_BACKUPS,
       },
       { type: "hop", text: "開車/計程車約6分鐘（1.9km）" },
       {
@@ -242,16 +229,6 @@ const days = [
         openHours: "17:30–翌2:00，週日休",
         map: { name: "喜ぐち", url: "https://maps.google.com/?q=喜ぐち 古町" },
       },
-      {
-        type: "activity",
-        order: 7,
-        name: "ぽんしゅ館 新潟驛店",
-        backups: [
-          { name: "唎酒番所（500円5杯試飲）", url: "https://maps.google.com/?q=唎酒番所 新潟駅" },
-          { name: "ぽんしゅ館コンプレックス角打ち（坐下小酌配菜）", url: "https://maps.google.com/?q=ぽんしゅ館コンプレックス" },
-        ],
-      },
-      { type: "note", text: "彈性備案：寺泊魚市場（海景＋海鮮，行程有空檔時可排入）" },
     ],
   },
   {
@@ -602,8 +579,42 @@ const budget = {
 };
 
 const packing = {
-  general: ["護照", "駕照（國際駕照）", "現金 / 交通卡", "行動電源", "常備藥品"],
-  ski: ["雪褲雪衣", "手套", "護目鏡", "防水登山鞋", "暖暖包"],
+  general: [
+    "襪子",
+    "手套",
+    "圍脖",
+    "毛毛帽",
+    "發熱衣褲",
+    "背心",
+    "大衣",
+    "雪靴",
+    "運動內衣",
+    "平日衣服*3套",
+    "內衣",
+    "內褲",
+    "睡衣*2",
+    "化妝品",
+    "保養品",
+    "牙刷",
+    "暖暖包",
+    "手機手錶充電線",
+    "電腦充電線",
+    "綁頭髮",
+    "電腦",
+    "行動電源",
+    "goretex",
+    "頸枕",
+    "靴子",
+    "日幣台幣",
+    "日文譯本",
+    "護唇膏",
+    "護照",
+    "悠遊卡",
+    "駕照（國際駕照）",
+    "現金 / 交通卡",
+    "常備藥品",
+  ],
+  ski: ["安全帽", "雪鏡", "外套", "雪褲", "手套", "護屁", "護面", "防水登山鞋"],
 };
 
 const todos = [
@@ -771,7 +782,7 @@ function renderNoteGroup(items) {
     .map((item) =>
       item.type === "note"
         ? `<div class="day-block__notes">📝 ${item.text}</div>`
-        : `<div class="day-block__notes">📝 ${item.name}${renderMapPins(null, item.backups)}</div>`
+        : `<details class="day-block__notes day-block__fold"><summary>📝 ${item.name}<span class="day-block__count">${item.backups.length} 個選項</span></summary>${renderMapPins(null, item.backups)}</details>`
     )
     .join("");
   return `<div class="day-block">${rows}</div>`;
